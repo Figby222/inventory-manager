@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Figby222/inventory-manager/issues"
   },
-  "homepage": "https://github.com/Figby222/inventory-manager#readme"
+  "homepage": "https://github.com/Figby222/inventory-manager#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
