@@ -1,0 +1,19 @@
+{
+  "name": "inventory-manager",
+  "version": "1.0.0",
+  "description": "A Node.js inventory manager repository used to manage inventories",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Figby222/inventory-manager.git"
+  },
+  "author": "Figby222",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Figby222/inventory-manager/issues"
+  },
+  "homepage": "https://github.com/Figby222/inventory-manager#readme"
+}
