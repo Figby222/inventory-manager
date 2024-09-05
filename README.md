@@ -1,0 +1,1 @@
+A Node.js inventory manager repository used to manage inventories
