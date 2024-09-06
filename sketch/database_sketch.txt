@@ -21,7 +21,6 @@ listing agent,
 
 table for houses with columns
 id (primary key),
-category,
 price,
 purchasable,
 furnature status,
@@ -68,3 +67,11 @@ listing_agent_id (foreign key),
 table for listing_agent with columns
 id (primary key),
 name,
+
+table for categories_connection with columns
+house_id (foreign key),
+category_id (foreign key),
+
+table for categories with columns
+id (primary key),
+category_name,
