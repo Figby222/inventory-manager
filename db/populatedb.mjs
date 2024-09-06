@@ -64,6 +64,30 @@ CREATE TABLE IF NOT EXISTS categories_connection (
 ALTER TABLE houses 
     ADD CONSTRAINT houses_listing_agent_fk FOREIGN KEY (listing_agent_id)
     REFERENCES users (id);
+
+INSERT INTO users (username, first_name, last_name) 
+    VALUES ('Figby222', 'Figby', '222');
+
+INSERT INTO houses (price, sale_status, furnature_status, bedroom_count, square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
+    VALUES (21000000, 'Purchased', 'Not furnished', 44, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
+
+
+INSERT INTO owners_connection (house_id, owner_id) 
+    VALUES (1, 1);
+
+INSERT INTO categories (category_name)
+VALUES
+    ('Modern'),
+    ('Big'),
+    ('Hillside'),
+    ('Ocean view');
+
+INSERT INTO categories_connection (house_id, category_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4);
 `
 
 async function main() {
