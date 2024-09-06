@@ -1,0 +1,3 @@
+Make the lists of options dropdown menus
+background offwhite/gray,
+each house will be in a square white component
