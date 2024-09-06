@@ -1,0 +1,14 @@
+Houses
+categories: cabins, modern, victorian, apartment,
+amenities: pool, movie-theater, outdoor living space, built in barbecue grill,
+purchasable: purchasable, for-rent,
+price,
+build date,
+furnature status: fully-furnished, partially furnished, not-furnished
+bedrooms,
+bathrooms,
+square footage,
+outdoor square footage,
+address,
+basement,
+balconies,
