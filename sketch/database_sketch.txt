@@ -4,6 +4,7 @@ amenities: pool, movie-theater, outdoor living space, built in barbecue grill,
 purchasable: purchasable, for-rent,
 price,
 build date,
+listing date,
 furnature status: fully-furnished, partially furnished, not-furnished
 bedrooms,
 bathrooms,
@@ -12,3 +13,41 @@ outdoor square footage,
 address,
 basement,
 balconies,
+city,
+state,
+country,
+owner,
+
+table for houses with columns
+id (primary key),
+category,
+price,
+purchasable,
+furnature status,
+bedrooms,
+bathrooms,
+square footage,
+address,
+basement,
+balconies,
+city,
+state,
+country,
+building date,
+listing date,
+
+table for ameneties_connection with columns
+house_id (foreign key),
+amenety_id (foreign key),
+
+table for ameneties with columns
+id (primary key),
+amenety_name,
+
+table for owners_connection with columns
+house_id (foreign key),
+owner_id (foreign key),
+
+table for owners with columns
+id (primary key),
+owner_name,
