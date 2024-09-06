@@ -1,0 +1,4 @@
+for each column, have an array of options which maps to the list of options a user can choose when 
+they are creating or updating their house listing, in other words, if a user picks "modern" 
+out of categories, and that HTML option's id is 1, set the category in the database to 
+optionsArray[1], and throw an error if that option doesn't exist
