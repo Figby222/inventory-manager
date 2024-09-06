@@ -1,0 +1,9 @@
+/
+/houses
+/houses/:houseId
+/houses/new
+/houses/search/?category(array)&bedroom_count&square_footage_min&square_footage_max&price_min&price_max&street&city&state&zip_code&country&sort_by&order&amenities(array)
+/users
+/users/new
+/users/userId
+/checkout
