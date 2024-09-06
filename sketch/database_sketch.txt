@@ -17,6 +17,7 @@ city,
 state,
 country,
 owner,
+listing agent,
 
 table for houses with columns
 id (primary key),
@@ -35,6 +36,8 @@ state,
 country,
 building date,
 listing date,
+images,
+Maybe listing_agent_id (foreign key),
 
 table for ameneties_connection with columns
 house_id (foreign key),
@@ -51,3 +54,17 @@ owner_id (foreign key),
 table for owners with columns
 id (primary key),
 owner_name,
+
+table for images with columns
+id (primary key)
+house_id (foreign key),
+image_href,
+view_index,
+
+table for listing_agent_connection with columns
+house_id (foreign key),
+listing_agent_id (foreign key),
+
+table for listing_agent with columns
+id (primary key),
+name,
