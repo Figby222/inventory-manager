@@ -16,7 +16,7 @@ housesRouter.get("/", housesController.housesListGet);
 
 housesRouter.post("/update/:houseId", housesController.updateHousePost);
 
-housesRouter.post("/delete/:housId", housesController.deleteHousePost);
+housesRouter.post("/delete/:houseId", housesController.deleteHousePost);
 
 
 housesRouter.post("/new", housesController.newHousePost);
