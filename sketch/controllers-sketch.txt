@@ -33,3 +33,21 @@ housesListGet()
 call db house list query
 send  404 reponse if house isn't found
 send houseList view if houses are found
+
+
+
+updateHousePageGet()
+call db house search query with params.houseId
+send 404 response if hosue isn't found
+send house update view if house is found
+
+updateHousePost()
+try db house update query with request body and params.houseId
+redirect user to houseList view
+catch the error and throw 400 response
+
+deleteHousePost()
+try db house delete query with params.houseId
+redirect user to houseList view
+catch the error and throw 400 response
+
