@@ -26,4 +26,15 @@ const newUserPost = asyncHandler(async (req, res) => {
     res.redirect("/users");
 })
 
-export { userDetailsGet, usersListSearchGet, newUserPost }
+const usersListGet = asyncHandler(async (req, res) => {
+    const usersList = [ { usersList: "blah blah blah" } ];
+    console.log("users list query");
+
+    if (usersList.length === 0) {
+        res.status(404).send("error page");
+    }
+
+    res.send("usersList view");
+})
+
+export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet }
