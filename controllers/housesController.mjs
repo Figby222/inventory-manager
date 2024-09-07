@@ -35,4 +35,18 @@ const housesListGet = asyncHandler(async (req, res) => {
     res.send("houseList view");
 })
 
-export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet }
+
+
+
+const updateHousePageGet = asyncHandler(async (req, res) => {
+    const houseDetails = { houseDetails: "blah blah blah" };
+    console.log("house details search query");
+
+    if (!houseDetails) {
+        res.status(404).send("error page");
+    }
+
+    res.send("house update view");
+})
+
+export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet }
