@@ -37,4 +37,18 @@ const usersListGet = asyncHandler(async (req, res) => {
     res.send("usersList view");
 })
 
-export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet }
+
+
+
+const updateUserPageGet = asyncHandler(async (req, res) => {
+    const userDetails = { userDetails: "blah blah blah" };
+    console.log(`users search query with ${req.params.userId}`)
+
+    if (!userDetails) {
+        res.status(404).send("error page");
+    }
+
+    res.send("userUpdate view");
+})
+
+export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet, updateUserPageGet }
