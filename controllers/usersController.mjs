@@ -56,4 +56,9 @@ const updateUserPost = asyncHandler(async (req, res) => {
     res.redirect("/users");
 })
 
-export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet, updateUserPageGet, updateUserPost }
+const deleteUserPost = asyncHandler(async (req, res) => {
+    console.log(`Delete user query with ${params.userId}`);
+    res.redirect("/users");
+})
+
+export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet, updateUserPageGet, updateUserPost, deleteUserPost }
