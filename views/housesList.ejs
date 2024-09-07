@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
+            <% if (locals.houses) { %>
+                <section class="houses">
+                    <ul aria-label="houses">
+                        <% houses.forEach((house) => { %>
+                            <% if (house.images && house.images.length > 1) { %>
+                                <ul class="images" aria-label="images">
+                                    <% house.images.forEach((image_href, index) => { %>
+                                        <li>
+                                            <img class="house-image" href="<%= image_href %>" alt="Image of house" />
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            <% } %>
+                            <li class="house-info">
+                                <h2 class="address">Address: <%= house.address %></h2>
+                                <p class="bedroom_count"><%= house.bedroom_count %> bedrooms</p>
+                                <p class="bathroom_count"><%= house.bathroom_count %>bathrooms</p>
+                                <p class="square-footage">Square Footage: <%= house.square_footage %> Square Feet</p>
+                            </li>
+                            <a href="/houses/<%= house.houseId %>">More Info</a>
+                        <% }) %>
+                    </ul>
+                </section>
+
+            <% } else { %>
+                <p class="no-houses-found">
+                    No houses found
+                </p>
+            <% } %>
+        </main>
+    </body>
+</html>
