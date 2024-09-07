@@ -51,3 +51,21 @@ try db house delete query with params.houseId
 redirect user to houseList view
 catch the error and throw 400 response
 
+userDetailsGet()
+call db user search query with params.userId
+send 404 response if user not found
+send user details view if user is found
+
+usersListSearchGet()
+call db users search query with query object
+send 404 response if users are not found
+send usersList view if users are found
+
+newUserPost()
+call db house add insert with request body
+redirect user to usersList view
+
+usersListGet()
+call db users search query
+send 404 response if users are not found
+send usersList view if users are found
