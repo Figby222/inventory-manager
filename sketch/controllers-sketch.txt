@@ -14,3 +14,22 @@ userDetailsGet()
 updateUserPageGet()
 updateUserPost()
 deleteUserPost()
+
+houseDetailsGet()
+call db house details query with params.houseId
+send 404 response if house isn't found
+    send houseDetails view if hosue is found
+
+housesListSearchGet()
+call db house search query with query object
+send 404 response if hosue isn't found
+send houseList view if houses are found
+
+newHousePost()
+call db house add insert with request body
+redirect user to houseList view
+
+housesListGet()
+call db house list query
+send  404 reponse if house isn't found
+send houseList view if houses are found
