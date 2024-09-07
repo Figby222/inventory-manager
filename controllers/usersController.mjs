@@ -51,4 +51,9 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
     res.send("userUpdate view");
 })
 
-export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet, updateUserPageGet }
+const updateUserPost = asyncHandler(async (req, res) => {
+    console.log(`Update user query with ${req.body} & ${req.params.userId}`);
+    res.redirect("/users");
+})
+
+export { userDetailsGet, usersListSearchGet, newUserPost, usersListGet, updateUserPageGet, updateUserPost }
