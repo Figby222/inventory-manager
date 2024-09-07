@@ -21,4 +21,9 @@ const usersListSearchGet = asyncHandler(async (req, res) => {
     res.send("usersList view");
 })
 
-export { userDetailsGet, usersListSearchGet }
+const newUserPost = asyncHandler(async (req, res) => {
+    console.log(`add insert house with ${req.body}`);
+    res.redirect("/users");
+})
+
+export { userDetailsGet, usersListSearchGet, newUserPost }
