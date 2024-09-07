@@ -69,3 +69,20 @@ usersListGet()
 call db users search query
 send 404 response if users are not found
 send usersList view if users are found
+
+
+
+updateUserPageGet()
+call db users search query with params.userId
+send 404 response if user is not found
+send userUpdate view if user is found
+
+updateUserPost()
+try db user update query with request body and params.houseId
+redirect user to usersList view
+catch the error and throw 400 response
+
+deleteUserPost()
+try db delete user query with params.userId
+redirect user to usersList view
+catch the error and throw 400 response
