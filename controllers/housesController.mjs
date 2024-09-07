@@ -54,4 +54,9 @@ const updateHousePost = asyncHandler(async (req, res) => {
     res.send("houseList view");
 })
 
-export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet, updateHousePost }
+const deleteHousePost = asyncHandler(async (req, res) => {
+    console.log(`Delete hosue query with ${req.params.houseId}`);
+    res.redirect("/houses");
+})
+
+export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet, updateHousePost, deleteHousePost }
