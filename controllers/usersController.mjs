@@ -11,4 +11,14 @@ const userDetailsGet = asyncHandler(async (req, res)  => {
     res.send("user details view");
 })
 
-export { userDetailsGet }
+const usersListSearchGet = asyncHandler(async (req, res) => {
+    const usersList = [ { usersList: "blah blah blah" } ];
+    console.log(`users search list query with ${req.query}`);
+
+    if (usersList.length === 0) {
+        res.status(404).send("error page");
+    }
+    res.send("usersList view");
+})
+
+export { userDetailsGet, usersListSearchGet }
