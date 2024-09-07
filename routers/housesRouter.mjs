@@ -8,9 +8,17 @@ housesRouter.get("/:houseId", housesController.houseDetailsGet);
 
 housesRouter.get("/search", housesController.housesListSearchGet);
 
-
-housesRouter.post("/new", housesController.newHousePost);
+housesRouter.get("/update/:houseId", housesController.updateHousePageGet);
 
 housesRouter.get("/", housesController.housesListGet);
+
+
+
+housesRouter.post("/update/:houseId", housesController.updateHousePost);
+
+housesRouter.post("/delete/:housId", housesController.deleteHousePost);
+
+
+housesRouter.post("/new", housesController.newHousePost);
 
 export default housesRouter;
