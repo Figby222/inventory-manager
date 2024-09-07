@@ -49,4 +49,9 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
     res.send("house update view");
 })
 
-export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet }
+const updateHousePost = asyncHandler(async (req, res) => {
+    console.log(`Update house query with ${req.body} & ${req.params.houseId}`);
+    res.send("houseList view");
+})
+
+export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet, updateHousePost }
