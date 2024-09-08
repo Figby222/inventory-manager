@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
+            <% if (locals.users) { %>
+                <section class="users">
+                    <ul>
+                        <% users.forEach((user) => { %>
+                            <li class="user">
+                                <p class="user-username"><%= user.username %></p>
+                                <a href="/users/<%= user.id %>">More info</a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </section>
+            <% } %>
+        </main>
+    </body>
+</html>
