@@ -21,6 +21,11 @@ const usersListSearchGet = asyncHandler(async (req, res) => {
     res.send("usersList view");
 })
 
+const createUserPageGet = asyncHandler(async (req, res) => {
+    console.log("Create user form view");
+    res.send("Create user form view");
+})
+
 const createUserPost = asyncHandler(async (req, res) => {
     console.log(`add insert house with ${req.body}`);
     res.redirect("/users");
@@ -61,4 +66,4 @@ const deleteUserPost = asyncHandler(async (req, res) => {
     res.redirect("/users");
 })
 
-export { userDetailsGet, usersListSearchGet, createUserPost, usersListGet, updateUserPageGet, updateUserPost, deleteUserPost }
+export { userDetailsGet, usersListSearchGet, createUserPageGet, createUserPost, usersListGet, updateUserPageGet, updateUserPost, deleteUserPost }
