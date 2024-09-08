@@ -5,6 +5,42 @@
         <title><%= title %></title>
     </head>
     <body>
-        
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <main>
+            <h1 class="main-heading"><%= house.title %></h1>
+            <section class="house-content">
+                <% if (house.images) { %>
+                    <ul class="house-images">
+                        <% house.images.forEach((image_href) => { %>
+                            <li>
+                                <img class="house-image" href="<%= image_href %>" alt="Image of house">
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+                <h2 class="house-address"><%= house.address %></h2>
+                <% if (house.amenities) { %>
+                    <h2 class="house-amenities-heading">Amenities: </h2>
+                    <ul class="house-amenities">
+                        <% house.amenities.forEach((amenity) => { %>
+                            <li class="house-amenity"><%= amenity %></li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+                <p class="bedroom-count"><%= house.bedroom_count %> bedrooms</p>
+                <p class="bathroom-count"><%= house.bathroom_count %></p>
+                <p class="furniture-status"><%= house.furniture_status %></p>
+            </section>
+            <section class="price-information">
+                <p class="price">$<%= house.price %></p>
+            </section>
+            <section class="listing-details">
+                <p class="owner-name">Owner: <%= house.owner_name %></p>
+                <p class="listing-agent-name">Listing agent: <%= house.listing_agent_name %></p>"
+            </section>
+
+        </main>
     </body>
 </html>
