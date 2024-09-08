@@ -4,11 +4,11 @@ import * as housesController from "../controllers/housesController.mjs";
 const housesRouter = Router();
 
 
-housesRouter.get("/:houseId", housesController.houseDetailsGet);
-
 housesRouter.get("/search", housesController.housesListSearchGet);
 
 housesRouter.get("/update/:houseId", housesController.updateHousePageGet);
+
+housesRouter.get("/:houseId", housesController.houseDetailsGet)
 
 housesRouter.get("/", housesController.housesListGet);
 
