@@ -5,9 +5,9 @@ const usersRouter = Router();
 
 usersRouter.get("/search", usersController.usersListSearchGet);
 
-usersRouter.get("/:userId", usersController.userDetailsGet);
-
 usersRouter.get("/update/:userId", usersController.updateUserPageGet);
+
+usersRouter.get("/:userId", usersController.userDetailsGet);
 
 usersRouter.get("/", usersController.usersListGet);
 
