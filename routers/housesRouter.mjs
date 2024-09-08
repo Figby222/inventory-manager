@@ -8,6 +8,8 @@ housesRouter.get("/search", housesController.housesListSearchGet);
 
 housesRouter.get("/update/:houseId", housesController.updateHousePageGet);
 
+housesRouter.get("/new", housesController.createHousePageGet);
+
 housesRouter.get("/:houseId", housesController.houseDetailsGet)
 
 housesRouter.get("/", housesController.housesListGet);
