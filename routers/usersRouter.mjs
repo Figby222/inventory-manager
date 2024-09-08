@@ -12,7 +12,7 @@ usersRouter.get("/update/:userId", usersController.updateUserPageGet);
 usersRouter.get("/", usersController.usersListGet);
 
 
-usersRouter.post("/new", usersController.newUserGet);
+usersRouter.post("/new", usersController.newUserPost);
 
 usersRouter.post("/update/:userId", usersController.updateUserPost);
 
