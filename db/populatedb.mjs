@@ -4,6 +4,7 @@ import "dotenv/config";
 
 const SQL = `CREATE TABLE IF NOT EXISTS houses (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR ( 30 ) NOT NULL,
     price NUMERIC(10) CONSTRAINT positive_price CHECK (price > 0) NOT NULL,
     sale_status VARCHAR ( 30 ) NOT NULL,
     furnature_status VARCHAR ( 30 ) NOT NULL,
@@ -68,8 +69,8 @@ ALTER TABLE houses
 INSERT INTO users (username, first_name, last_name) 
     VALUES ('Figby222', 'Figby', '222');
 
-INSERT INTO houses (price, sale_status, furnature_status, bedroom_count, square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
-    VALUES (21000000, 'Purchased', 'Not furnished', 44, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
+INSERT INTO houses (title, price, sale_status, furnature_status, bedroom_count, square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
+    VALUES ('Ryan''s Estate', 21000000, 'Purchased', 'Not furnished', 44, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
 
 
 INSERT INTO owners_connection (house_id, owner_id) 
