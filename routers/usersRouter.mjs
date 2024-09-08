@@ -7,6 +7,8 @@ usersRouter.get("/search", usersController.usersListSearchGet);
 
 usersRouter.get("/update/:userId", usersController.updateUserPageGet);
 
+usersRouter.get("/new", usersController.createUserPageGet);
+
 usersRouter.get("/:userId", usersController.userDetailsGet);
 
 usersRouter.get("/", usersController.usersListGet);
