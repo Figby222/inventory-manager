@@ -19,7 +19,7 @@ const housesListSearchGet = asyncHandler(async (req, res) => {
     res.send("houseList view");
 })
 
-const newHousePost = asyncHandler(async (req, res) => {
+const createHousePost = asyncHandler(async (req, res) => {
     console.log(`Add insert house into db with ${req.body}`);
     res.redirect("/houses");
 })
@@ -59,4 +59,4 @@ const deleteHousePost = asyncHandler(async (req, res) => {
     res.redirect("/houses");
 })
 
-export { houseDetailsGet, housesListSearchGet, newHousePost, housesListGet, updateHousePageGet, updateHousePost, deleteHousePost }
+export { houseDetailsGet, housesListSearchGet, createHousePost, housesListGet, updateHousePageGet, updateHousePost, deleteHousePost }

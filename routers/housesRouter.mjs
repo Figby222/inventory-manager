@@ -19,6 +19,6 @@ housesRouter.post("/update/:houseId", housesController.updateHousePost);
 housesRouter.post("/delete/:houseId", housesController.deleteHousePost);
 
 
-housesRouter.post("/new", housesController.newHousePost);
+housesRouter.post("/new", housesController.createHousePost);
 
 export default housesRouter;
