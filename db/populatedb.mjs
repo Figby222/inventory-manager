@@ -7,7 +7,7 @@ const SQL = `CREATE TABLE IF NOT EXISTS houses (
     title VARCHAR ( 30 ) NOT NULL,
     price NUMERIC(10) CONSTRAINT positive_price CHECK (price > 0) NOT NULL,
     sale_status VARCHAR ( 30 ) NOT NULL,
-    furnature_status VARCHAR ( 30 ) NOT NULL,
+    furniture_status VARCHAR ( 30 ) NOT NULL,
     bedroom_count NUMERIC(4) NOT NULL,
     bathroom_count NUMERIC(5, 1) NOT NULL,
     square_footage NUMERIC(6) CONSTRAINT positive_square_footage CHECK (square_footage > 0) NOT NULL,
@@ -70,7 +70,7 @@ ALTER TABLE houses
 INSERT INTO users (username, first_name, last_name) 
     VALUES ('Figby222', 'Figby', '222');
 
-INSERT INTO houses (title, price, sale_status, furnature_status, bedroom_count, bathroom_count square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
+INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
     VALUES ('Ryan''s Estate', 21000000, 'Purchased', 'Not furnished', 44, 44.5, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
 
 
