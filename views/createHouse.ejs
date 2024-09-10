@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <main>
+            <form action="/houses/new" method="POST">
+                <h1 class="main-heading"><%= title %></h1>
+                <fieldset class="main-info">
+                    <h3 class="house-information-heading">House Information</h3>
+                    <label for="title">Title: <span class="required-symbol">*</span></label>
+                    <input type="text" name="title" id="title" required />
+                    <label for="price">Price: <span class="required-symbol">*</span></label>
+                    <input type="number" name="price" id="price" step="1000000" required />
+                    <label for="bedroom-count">Bedrooms: <span class="required-symbol">*</span></label>
+                    <input type="number" name="bedroomCount" id="bedroom-count" required />
+                    <label for="bathroom-count">Bathrooms: <span class="required-symbol">*</span></label>
+                    <input type="number" name="bathroomCount" id="bathroom-count" required />
+                    <label for="square-footage">Square Footage: <span class="required-symbol">*</span></label>
+                    <input type="number" name="squareFootage" id="square-footage" required />
+                </fieldset>
+                <fieldset class="address">
+                    <h3 class="address-heading">Address</h3>
+                    <label for="house-number">House Number: <span class="required-symbol">*</span></label>
+                    <input type="number" name="houseNumber" id="house-number" required />
+                    <label for="street-name">Street: <span class="required-symbol">*</span></label>
+                    <input type="text" name="streetName" id="street-name" required />
+                    <label for="city-name">City: <span class="required-symbol">*</span></label>
+                    <input type="text" name="cityName" id="city-name" required />
+                    <label for="state-name">State: <span class="required-symbol">*</span></label>
+                    <input type="text" name="stateName" id="state-name" required />
+                    <label for="zip-code">Zip/Postal Code: <span class="required-symbol">*</span></label>
+                    <input type="number" name="zipCode" id="zip-code" min="0" max="99999" required />
+                    <label for="country-name">Country: </label>
+                    <input type="text" name="countryName" id="country-name" required />
+                </fieldset>
+                <fieldset class="amenities">
+                    <h3 class="amenities-heading">Amenities</h3>
+                    <ul class="amenities-list">
+                        <% amenities.forEach((amenity) => { %>
+                            <li class="amenity">
+                                <input type="checkbox" name="amenities" id="<%= amenity %>" value="<%= amenity %>" />
+                                <label for="<%= amenity %>"><%= amenity %></label>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </fieldset>
+                <fieldset class="categories">
+                    <h3 class="categories-heading">Categories</h3>
+                    <ul class="categories-list">
+                        <% categories.forEach((category) => { %>
+                            <li class="category">
+                                <input type="checkbox" name="categories" id="<%= category %>" value="<%= category %>" />
+                                <label for="<%= category %>"><%= category %></label>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>
