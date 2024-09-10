@@ -10,6 +10,16 @@
         </header>
         <main>
             <h1 class="main-heading"><%= title %></h1>
+            <form class="users-search" action="/users/search" method="GET">
+                <h2 class="users-search-heading">Users Search</h2>
+                <label for="username-search">Username: </label>
+                <input type="text" name="username" id="username-search" />
+                <label for="first-name-search">First Name: </label>
+                <input type="text" name="firstName" id="first-name-search" />
+                <label for="last-name-search">Last Name: </label>
+                <input type="text" name="lastName" id="last-name-search" />
+                <button type="submit">Search</button>
+            </form>
             <% if (locals.users) { %>
                 <section class="users">
                     <ul>
