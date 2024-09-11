@@ -42,10 +42,20 @@ const createUserPageGet = asyncHandler(async (req, res) => {
     res.send("Create user form view");
 })
 
-const createUserPost = asyncHandler(async (req, res) => {
-    console.log(`add insert house with ${req.body}`);
-    res.redirect("/users");
-})
+const createUserPost = [
+    createUserFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log("Render createUserPageGet");
+            res.status(400).send("Create user page view component");
+            return;
+        }
+        
+        console.log(`add insert house with ${req.body}`);
+        res.redirect("/users");
+    })
+]
 
 const usersListGet = asyncHandler(async (req, res) => {
     const usersList = [ { usersList: "blah blah blah" } ];
