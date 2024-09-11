@@ -54,6 +54,59 @@ const createHouseFormValidator = [
         
 ]
 
+const searchHouseFormValidator = [
+    query("title")
+        .optional({ values: "falsy" })
+        .isLength({ max: 30 }).withMessage("Title field must be less than 30 characters"),
+    query("price")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("Price field must be a number")
+        .isInt({ min: 10000 }).withMessage("Price field must be at least $10,000"),
+    query("bedroomCount")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("Bedrooms field must be a number")
+        .isFloat({ min: 0 }).withMessage("Bedrooms field must be above 0"),
+    query("bathroomCount")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("Bathrooms field must be a number")
+        .isFloat({ min: 0 }).withMessage("Bathrooms field must be above 0"),
+    query("squareFootage")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("Square Ft. field must be a number")
+        .isInt({ min: 0 }).withMessage("Square Ft. field must be above 0"),
+    query("houseNumber")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("House Number field must be a number")
+        .isInt({ min: 0 }).withMessage("House Number field must be above 0"),
+    query("streetName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("Street field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
+    query("cityName")
+        /optional({ values: "falsy" })
+        .isAlpha().withMessage("City field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
+    query("zipCode")
+        .optional({ values: "falsy" })
+        .isNumeric().withMessage("Zip/Postal Code field must be a number")
+        .isInt({ min: 0, max: 99999 }).withMessage("Zip/Postal Code field must be between 00000 and 99999"),
+    query("countryName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("Country field must only contain alphabetical characters")
+        .isLength().withMessage("Country field must contain a maximum of 30 characters"),
+    query("amenities[*]")
+        .optional({ values: "falsy" }),
+    query("categories[*]")
+        .optional({ values: "falsy" }),
+    query("amenities")
+        .toArray()
+        .optional({ values: "falsy" }),
+    query("categories")
+        .toArray()
+        .optional({ values: "falsy" }),
+        
+]
+
 const houseDetailsGet = asyncHandler(async (req, res) => {
     const houseDetails = { houseDetails: "blahblahblah" }
     console.log("house details query");
