@@ -1,4 +1,20 @@
 import asyncHandler from "express-async-handler";
+import { body, query, validationResult } from "express-validator";
+
+const createUserFormValidator = [
+    body("username")
+        .notEmpty().withMessage("Username field must not be empty")
+        .isAlpha().withMessage("Username field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
+    body("firstName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("First Name field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
+    body("lastName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
+]
 
 const userDetailsGet = asyncHandler(async (req, res)  => {
     const userDetails = { userDetails: "blah blah blah" };
