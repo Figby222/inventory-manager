@@ -51,7 +51,7 @@ const createUserPost = [
             res.status(400).send("Create user page view component");
             return;
         }
-        
+
         console.log(`add insert house with ${req.body}`);
         res.redirect("/users");
     })
@@ -82,10 +82,20 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
     res.send("userUpdate view");
 })
 
-const updateUserPost = asyncHandler(async (req, res) => {
-    console.log(`Update user query with ${req.body} & ${req.params.userId}`);
-    res.redirect("/users");
-})
+const updateUserPost = [
+    createUserFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log("Render updateUserPageGet with user id/info");
+            res.status(400).send("Update user page view component");
+            return;
+        }
+        
+        console.log(`Update user query with ${req.body} & ${req.params.userId}`);
+        res.redirect("/users");
+    })
+]
 
 const deleteUserPost = asyncHandler(async (req, res) => {
     console.log(`Delete user query with ${params.userId}`);
