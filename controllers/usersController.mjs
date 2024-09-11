@@ -42,15 +42,25 @@ const userDetailsGet = asyncHandler(async (req, res)  => {
     res.send("user details view");
 })
 
-const usersListSearchGet = asyncHandler(async (req, res) => {
-    const usersList = [ { usersList: "blah blah blah" } ];
-    console.log(`users search list query with ${req.query}`);
-
-    if (usersList.length === 0) {
-        res.status(404).send("error page");
-    }
-    res.send("usersList view");
-})
+const usersListSearchGet = [
+    searchUserFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log("Render usersListSearchGet");
+            res.status(400).send("Users list view component");
+            return;
+        }
+        
+        const usersList = [ { usersList: "blah blah blah" } ];
+        console.log(`users search list query with ${req.query}`);
+    
+        if (usersList.length === 0) {
+            res.status(404).send("error page");
+        }
+        res.send("usersList view");
+    })
+]
 
 const createUserPageGet = asyncHandler(async (req, res) => {
     console.log("Create user form view");
