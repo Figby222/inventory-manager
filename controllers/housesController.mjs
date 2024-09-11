@@ -116,15 +116,25 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
     }
 })
 
-const housesListSearchGet = asyncHandler(async (req, res) => {
-    const houseList = [ { houseList: "blah blah blah" } ]
-    console.log(`house list search query ${req.query}`);
-
-    if (houseList.length === 0) {
-        res.status(404).send("error page");
-    }
-    res.send("houseList view");
-})
+const housesListSearchGet = [
+    searchHouseFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty) {
+            console.log("Render housesList");
+            res.status(400).send("Houses list view component");
+            return;
+        }
+        
+        const houseList = [ { houseList: "blah blah blah" } ]
+        console.log(`house list search query ${req.query}`);
+    
+        if (houseList.length === 0) {
+            res.status(404).send("error page");
+        }
+        res.send("houseList view");
+    })
+]
 
 const createHousePageGet = asyncHandler(async (req, res) => {
     console.log("Create house form view");
