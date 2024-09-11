@@ -108,10 +108,20 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
     res.send("house update view");
 })
 
-const updateHousePost = asyncHandler(async (req, res) => {
-    console.log(`Update house query with ${req.body} & ${req.params.houseId}`);
-    res.send("houseList view");
-})
+const updateHousePost = [
+    createHouseFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty) {
+            console.log("Render updateHousePageGet with errors");
+            res.send("Update house form view with errors");
+            return;
+        }
+        
+        console.log(`Update house query with ${req.body} & ${req.params.houseId}`);
+        res.send("houseList view");
+    })
+]
 
 const deleteHousePost = asyncHandler(async (req, res) => {
     console.log(`Delete hosue query with ${req.params.houseId}`);
