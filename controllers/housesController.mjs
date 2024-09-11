@@ -68,10 +68,20 @@ const createHousePageGet = asyncHandler(async (req, res) => {
     res.send("Create house form view");
 })
 
-const createHousePost = asyncHandler(async (req, res) => {
-    console.log(`Add insert house into db with ${req.body}`);
-    res.redirect("/houses");
-})
+const createHousePost = [
+    createHouseFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            console.log("Render createHouseGet with errors");
+            res.send("Create hoouse form view with errors");
+            return;
+        }
+
+        console.log(`Add insert house into db with ${req.body}`);
+        res.redirect("/houses");
+    })
+]
 
 const housesListGet = asyncHandler(async (req, res) => {
     const houseList = [ { houseList: "blah blah blah" } ]
