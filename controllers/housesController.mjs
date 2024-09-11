@@ -84,7 +84,7 @@ const createHousePost = [
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
             console.log("Render createHouseGet with errors");
-            res.send("Create hoouse form view with errors");
+            res.status(400).send("Create hoouse form view with errors");
             return;
         }
 
@@ -124,7 +124,7 @@ const updateHousePost = [
         const errors = validationResult(req);
         if (!errors.isEmpty) {
             console.log("Render updateHousePageGet with errors");
-            res.send("Update house form view with errors");
+            res.status(400).send("Update house form view with errors");
             return;
         }
 
