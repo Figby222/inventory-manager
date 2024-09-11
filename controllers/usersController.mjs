@@ -16,6 +16,21 @@ const createUserFormValidator = [
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
 ]
 
+const searchUserFormValidator = [
+    query("username")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("Username field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
+    query("firstName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("First Name field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
+    query("lastName")
+        .optional({ values: "falsy" })
+        .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
+]
+
 const userDetailsGet = asyncHandler(async (req, res)  => {
     const userDetails = { userDetails: "blah blah blah" };
     console.log("user details query");
