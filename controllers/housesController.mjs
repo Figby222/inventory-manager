@@ -40,7 +40,17 @@ const createHouseFormValidator = [
     body("countryName")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Country field must only contain alphabetical characters")
-        .isLength().withMessage("Country field must contain a maximum of 30 characters")
+        .isLength().withMessage("Country field must contain a maximum of 30 characters"),
+    body("amenities[*]")
+        .optional({ values: "falsy" }),
+    body("categories[*]")
+        .optional({ values: "falsy" }),
+    body("amenities")
+        .toArray()
+        .optional({ values: "falsy" }),
+    body("categories")
+        .toArray()
+        .optional({ values: "falsy" }),
         
 ]
 
@@ -117,7 +127,7 @@ const updateHousePost = [
             res.send("Update house form view with errors");
             return;
         }
-        
+
         console.log(`Update house query with ${req.body} & ${req.params.houseId}`);
         res.send("houseList view");
     })
