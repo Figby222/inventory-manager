@@ -168,12 +168,23 @@ const createHousePost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            console.log("Render createHouseGet with errors");
-            res.status(400).send("Create hoouse form view with errors");
+            res.status(400).render("createHouse", { errors: errors });
             return;
         }
 
-        console.log(`Add insert house into db with ${req.body}`);
+        db.insertHouse({
+            title: req.body.title,
+            price: req.body.price,
+            bedroomCount: req.body.bedroomCount,
+            bathroomCount: req.body.bathroomCount,
+            squareFootage: req.body.squareFootage,
+            houseNumber: req.body.houseNumber,
+            cityName: req.body.cityName,
+            stateName: req.body.stateName,
+            zipCode: req.body.zipCode,
+            countryName: req.body.countryName,
+        })
+        
         res.redirect("/houses");
     })
 ]
