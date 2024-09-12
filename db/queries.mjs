@@ -1,4 +1,5 @@
 import Pool from "./pool.mjs";
+import format from "pg-format";
 
 async function getHouseDetails(houseId) {
     const house = (await Pool.query(`
@@ -41,4 +42,42 @@ async function getHouseDetails(houseId) {
     return { house, images, amenities, categories };
 }
 
-export default { getHouseDetails }
+async function getHousesSearchList(query) {
+    const housesList = (await Pool.query(
+        format(`
+            SELECT DISTINCT houses.id, title, price, bedroom_count, bathroom_count, square_footage, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address
+            FROM houses
+            LEFT JOIN amenities_connection
+            ON houses.id=amenities_connection.house_id
+            LEFT JOIN amenities ON amenities_connection.amenity_id=amenities.id
+            LEFT JOIN categories_connection ON houses.id=categories_connection.house_id
+            LEFT JOIN categories ON categories_connection.category_id=categories.id
+            WHERE LOWER(title) LIKE LOWER(%1$L)
+            ${!!query.minimum_price ? "AND price >= %2$L" : ""}
+            ${!!query.maximum_price ? "AND price <= %3$L" : ""}
+            ${!!query.minimum_bedroom_count ? "AND bedroom_count >= %4$L" : ""}
+            ${!!query.maximum_bedroom_count ? "AND bedroom_count <= %5$L" : ""}
+            ${!!query.minimum_square_footage ? "AND square_footage >= %6$L" : ""}
+            ${!!query.maximum_square_footage ? "AND square_footage <= %7$L" : ""}
+            ${!!query.furniture_status ? "AND LOWER(furniture_status) LIKE LOWER(%8$L)" : ""}
+            ${!!query.category_ids ? "AND categories.id IN (%9$L)" : ""}
+            ${!!query.amenity_ids ? "AND amenities.id IN (%10$L)" : ""}
+            
+        `, 
+        ("%" + query.title + "%"),
+        query.minimum_price,
+        query.maximum_price,
+        query.minimum_bedroom_count,
+        query.maximum_bedroom_count,
+        query.minimum_square_footage,
+        query.maximum_square_footage,
+        ("%" + query.furniture_status + "%"),
+        query.category_ids, 
+        query.amenity_ids, 
+)))
+    .rows;
+
+    return housesList;
+}
+
+export default { getHouseDetails, getHousesSearchList }
