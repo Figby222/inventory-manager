@@ -69,8 +69,7 @@ const usersListSearchGet = [
 ]
 
 const createUserPageGet = asyncHandler(async (req, res) => {
-    console.log("Create user form view");
-    res.send("Create user form view");
+    res.render("createUser");
 })
 
 const createUserPost = [
