@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { body, query, validationResult } from "express-validator";
+import NotFoundError from "./util/NotFoundError.mjs";
 
 const createUserFormValidator = [
     body("username")
@@ -32,14 +33,17 @@ const searchUserFormValidator = [
 ]
 
 const userDetailsGet = asyncHandler(async (req, res)  => {
-    const userDetails = { userDetails: "blah blah blah" };
-    console.log("user details query");
+    const userDetails = db.getUserDetails(req.params.userId);
 
     if (!userDetails) {
-        res.status(404).send("error page");
+        throw new NotFoundError(`User with id ${req.params.userId} not found`);
     }
 
-    res.send("user details view");
+    res.render("userDetails", {
+        username: userDetails.username,
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName
+    });
 })
 
 const usersListSearchGet = [
