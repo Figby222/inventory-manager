@@ -100,14 +100,17 @@ const usersListGet = asyncHandler(async (req, res) => {
 
 
 const updateUserPageGet = asyncHandler(async (req, res) => {
-    const userDetails = { userDetails: "blah blah blah" };
-    console.log(`users search query with ${req.params.userId}`)
+    const userDetails = db.getUserDetails(req.params.userId);
 
     if (!userDetails) {
-        res.status(404).send("error page");
+        throw new NotFoundError(`User with id ${req.params.userId} not found`);
     }
 
-    res.send("userUpdate view");
+    res.render("userUpdate", {
+        username: userDetails.username,
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName
+    });
 })
 
 const updateUserPost = [
