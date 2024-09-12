@@ -1,5 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { query, body, validationResult } from "expres-validator";
+import db from "../db/queries.mjs";
+import NotFoundError from "./util/NotFoundError.mjs";
 
 const createHouseFormValidator = [
     body("title")
@@ -108,12 +110,24 @@ const searchHouseFormValidator = [
 ]
 
 const houseDetailsGet = asyncHandler(async (req, res) => {
-    const houseDetails = { houseDetails: "blahblahblah" }
-    console.log("house details query");
-    res.send("house details view");
+    const houseDetails = db.getHouseDetails(req.params.houseId)
+    
     if (!houseDetails) {
-        res.status(404).send("error page");
+        throw new NotFoundError(`House with id ${req.params.houseId} not found`);
     }
+
+    res.render("houseDetails", {
+        title: houseDetails.title,
+        images: houseDetails.images,
+        address: houseDetails.address,
+        amenities: houseDetails.amenities,
+        bedroomCount: houseDetails.bedroomCount,
+        bathroomCount: houseDetails.bathroomCount,
+        furnitureStatus: houseDetails.furnitureStatus,
+        price: houseDetails.price,
+        ownerName: houseDetails.ownerName,
+        listingAgentName: houseDetails.listingAgentName
+    })
 })
 
 const housesListSearchGet = [
