@@ -111,7 +111,7 @@ const searchHouseFormValidator = [
 
 const houseDetailsGet = asyncHandler(async (req, res) => {
     const houseDetails = db.getHouseDetails(req.params.houseId)
-    
+
     if (!houseDetails) {
         throw new NotFoundError(`House with id ${req.params.houseId} not found`);
     }
@@ -134,7 +134,7 @@ const housesListSearchGet = [
     searchHouseFormValidator,
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty) {
+        if (!errors.isEmpty()) {
             console.log("Render housesList");
             res.status(400).send("Houses list view component");
             return;
