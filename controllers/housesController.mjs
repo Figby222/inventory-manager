@@ -110,7 +110,7 @@ const searchHouseFormValidator = [
 ]
 
 const houseDetailsGet = asyncHandler(async (req, res) => {
-    const houseDetails = db.getHouseDetails(req.params.houseId)
+    const houseDetails = await db.getHouseDetails(req.params.houseId)
 
     if (!houseDetails) {
         throw new NotFoundError(`House with id ${req.params.houseId} not found`);
@@ -139,7 +139,7 @@ const housesListSearchGet = [
             return;
         }
         
-        const houseList = db.getHousesSearchList({
+        const houseList = await db.getHousesSearchList({
             title: req.query.title,
             minimumPrice: req.query.minimumPrice,
             maximumPrice: req.query.maximumPrice,
@@ -172,7 +172,7 @@ const createHousePost = [
             return;
         }
 
-        db.insertHouse({
+        await db.insertHouse({
             title: req.body.title,
             price: req.body.price,
             bedroomCount: req.body.bedroomCount,
@@ -190,7 +190,7 @@ const createHousePost = [
 ]
 
 const housesListGet = asyncHandler(async (req, res) => {
-    const housesList = db.getHousesList();
+    const housesList = await db.getHousesList();
     res.render("housesList", { houses: housesList });
 })
 
@@ -198,7 +198,7 @@ const housesListGet = asyncHandler(async (req, res) => {
 
 
 const updateHousePageGet = asyncHandler(async (req, res) => {
-    const houseDetails = db.getHouseDetails(req.params.houseId);
+    const houseDetails = await db.getHouseDetails(req.params.houseId);
 
     if (!houseDetails) {
         throw new NotFoundError(`House with id ${req.params.houseId} not found`);
@@ -230,12 +230,12 @@ const updateHousePost = [
             return;
         }
 
-        const houseExists = db.houseExists(req.params.houseId);
+        const houseExists = await db.houseExists(req.params.houseId);
         if (!houseExists) {
             throw new NotFoundError(`House with id ${req.params.houseId} not found`);
         }
 
-        db.updateHouse(req.params.houseId, {
+        await db.updateHouse(req.params.houseId, {
             title: req.body.title,
             price: req.body.price,
             bedroomCount: req.body.bedroomCount,
@@ -254,11 +254,11 @@ const updateHousePost = [
 ]
 
 const deleteHousePost = asyncHandler(async (req, res) => {
-    if (!db.houseExists(req.params.houseId)) {
+    if (!await db.houseExists(req.params.houseId)) {
         res.redirect("/houses");
     }
 
-    db.deleteHouse(req.params.houseId);
+    await db.deleteHouse(req.params.houseId);
     res.redirect("/houses");
 })
 
