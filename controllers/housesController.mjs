@@ -190,14 +190,8 @@ const createHousePost = [
 ]
 
 const housesListGet = asyncHandler(async (req, res) => {
-    const houseList = [ { houseList: "blah blah blah" } ]
-    console.log("house list query");
-
-    if (houseList.length === 0) {
-        res.status(404).send("error page");
-    }
-
-    res.send("houseList view");
+    const housesList = db.getHousesList();
+    res.render("housesList", { houses: housesList });
 })
 
 
