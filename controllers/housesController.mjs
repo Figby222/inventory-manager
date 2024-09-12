@@ -135,18 +135,27 @@ const housesListSearchGet = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log("Render housesList");
-            res.status(400).send("Houses list view component");
+            res.status(400).render("houseList", { errors: errors });
             return;
         }
         
-        const houseList = [ { houseList: "blah blah blah" } ]
-        console.log(`house list search query ${req.query}`);
+        const houseList = db.getHousesSearchList({
+            title: req.query.title,
+            minimumPrice: req.query.minimumPrice,
+            maximumPrice: req.query.maximumPrice,
+            minimumBedrooms: req.query.minimumBedrooms,
+            maximumBedrooms: req.query.maximumBedrooms,
+            minimumSquareFootage: req.query.minimumSquareFootage,
+            maximumSquareFootage: req.query.maximumSquareFootage,
+            furnitureStatus: req.query.furnitureStatus,
+            amentities: req.query.amenities,
+            categories: req.query.categories
+        })
     
         if (houseList.length === 0) {
-            res.status(404).send("error page");
+            res.status(404).render("houseList");
         }
-        res.send("houseList view");
+        res.render("houseList");
     })
 ]
 
