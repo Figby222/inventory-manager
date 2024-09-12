@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { body, query, validationResult } from "express-validator";
+import db from "../db/queries.mjs";
 import NotFoundError from "./util/NotFoundError.mjs";
 
 const createUserFormValidator = [
