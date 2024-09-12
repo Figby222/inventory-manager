@@ -226,13 +226,30 @@ const updateHousePost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log("Render updateHousePageGet with errors");
-            res.status(400).send("Update house form view with errors");
+            res.status(400).render("updateHouse", { errors: errors });
             return;
         }
 
-        console.log(`Update house query with ${req.body} & ${req.params.houseId}`);
-        res.send("houseList view");
+        const houseExists = db.houseExists(req.params.houseId);
+        if (!houseExists) {
+            throw new NotFoundError(`House with id ${req.params.houseId} not found`);
+        }
+
+        req.updateHouse(req.params.houseId, {
+            title: req.body.title,
+            price: req.body.price,
+            bedroomCount: req.body.bedroomCount,
+            bathroomCount: req.body.bathroomCount,
+            squareFootage: req.body.squareFootage,
+            houseNumber: req.body.houseNumber,
+            streetName: req.body.streetName,
+            cityName: req.body.cityName,
+            stateName: req.body.stateName,
+            zipCode: req.body.zipCode,
+            countryName: req.body.countryName
+        })
+        
+        res.redirect("/houses");
     })
 ]
 
