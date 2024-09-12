@@ -118,12 +118,20 @@ const updateUserPost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log("Render updateUserPageGet with user id/info");
-            res.status(400).send("Update user page view component");
+            res.status(400).render("updateUser", { errors: errors });
             return;
         }
         
-        console.log(`Update user query with ${req.body} & ${req.params.userId}`);
+        if (!db.userExists(req.params.userId)) {
+            throw new NotFoundError(`User with id ${req.params.userId} not found`);
+        }
+
+        db.updateUser(req.params.userId, {
+            username: req.body.username,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        })
+        
         res.redirect("/users");
     })
 ]
