@@ -77,12 +77,16 @@ const createUserPost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log("Render createUserPageGet");
-            res.status(400).send("Create user page view component");
+            res.status(400).render("createUser", { errors: errors });
             return;
         }
 
-        console.log(`add insert house with ${req.body}`);
+        db.insertUser({
+            username: req.body.username,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        })
+
         res.redirect("/users");
     })
 ]
