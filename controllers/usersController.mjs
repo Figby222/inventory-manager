@@ -33,7 +33,7 @@ const searchUserFormValidator = [
 ]
 
 const userDetailsGet = asyncHandler(async (req, res)  => {
-    const userDetails = db.getUserDetails(req.params.userId);
+    const userDetails = await db.getUserDetails(req.params.userId);
 
     if (!userDetails) {
         throw new NotFoundError(`User with id ${req.params.userId} not found`);
@@ -55,7 +55,7 @@ const usersListSearchGet = [
             return;
         }
         
-        const usersList = db.getUsersSearchList({
+        const usersList = await db.getUsersSearchList({
             username: req.query.username,
             firstName: req.query.firstName,
             lastName: req.query.lastName
@@ -81,7 +81,7 @@ const createUserPost = [
             return;
         }
 
-        db.insertUser({
+        await db.insertUser({
             username: req.body.username,
             firstName: req.body.firstName,
             lastName: req.body.lastName
@@ -92,7 +92,7 @@ const createUserPost = [
 ]
 
 const usersListGet = asyncHandler(async (req, res) => {
-    const usersList = db.getUserList();
+    const usersList = await db.getUserList();
     res.render("usersList", { users: usersList });
 })
 
@@ -100,7 +100,7 @@ const usersListGet = asyncHandler(async (req, res) => {
 
 
 const updateUserPageGet = asyncHandler(async (req, res) => {
-    const userDetails = db.getUserDetails(req.params.userId);
+    const userDetails = await db.getUserDetails(req.params.userId);
 
     if (!userDetails) {
         throw new NotFoundError(`User with id ${req.params.userId} not found`);
@@ -126,7 +126,7 @@ const updateUserPost = [
             throw new NotFoundError(`User with id ${req.params.userId} not found`);
         }
 
-        db.updateUser(req.params.userId, {
+        await db.updateUser(req.params.userId, {
             username: req.body.username,
             firstName: req.body.firstName,
             lastName: req.body.lastName
@@ -137,11 +137,11 @@ const updateUserPost = [
 ]
 
 const deleteUserPost = asyncHandler(async (req, res) => {
-    if (!db.userExists("req.params.userId")) {
+    if (!await db.userExists("req.params.userId")) {
         res.redirect("/users");
     }
 
-    db.deleteUser(req.params.userId);
+    await db.deleteUser(req.params.userId);
     res.redirect("/users");
 })
 
