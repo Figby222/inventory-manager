@@ -11,6 +11,7 @@
         <main>
             <h1 class="main-heading"><%= title %></h1>
             <form class="users-search" action="/users/search" method="GET">
+                <%- include("errors") %>
                 <h2 class="users-search-heading">Users Search</h2>
                 <label for="username-search">Username: </label>
                 <input type="text" name="username" id="username-search" />

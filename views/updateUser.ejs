@@ -10,6 +10,7 @@
         </header>
         <h1 class="main-heading"><%= title %></h1>
         <form action="/users/update/<%= user.id %>" method="POST">
+            <%- include("errors") %>
             <fieldset class="user-info">
                 <h3 class="user-info-heading">User Info</h3>
                 <label for="username">Username: <span class="required-symbol">*</span></label>

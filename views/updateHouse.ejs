@@ -9,6 +9,7 @@
             <%- include("navbar") %>
         </header>
         <form action="/houses/update/<%= house.id %>" method="POST">
+            <%- include("errors") %>
             <h1 class="main-heading"><%= title %></h1>
             <fieldset class="main-info">
                 <h3 class="house-information-heading">House Information</h3>

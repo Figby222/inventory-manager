@@ -11,6 +11,7 @@
         <main>
             <form action="/houses/new" method="POST">
                 <h1 class="main-heading"><%= title %></h1>
+                <%- include("errors") %>
                 <fieldset class="main-info">
                     <h3 class="house-information-heading">House Information</h3>
                     <label for="title">Title: <span class="required-symbol">*</span></label>

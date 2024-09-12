@@ -11,6 +11,7 @@
         <main>
             <h1 class="main-heading"><%= title %></h1>
             <form class="houses-search" action="/houses/search" method="GET">
+                <%- include("errors") %>
                 <h2 class="filter-search">Filter Search</h2>
                 <fieldset class="main-info">
                     <h3 class="main-info-heading">Main Info</h3>
