@@ -131,13 +131,17 @@ const updateUserPost = [
             firstName: req.body.firstName,
             lastName: req.body.lastName
         })
-        
+
         res.redirect("/users");
     })
 ]
 
 const deleteUserPost = asyncHandler(async (req, res) => {
-    console.log(`Delete user query with ${params.userId}`);
+    if (!db.userExists("req.params.userId")) {
+        res.redirect("/users");
+    }
+
+    db.deleteUser(req.params.userId);
     res.redirect("/users");
 })
 
