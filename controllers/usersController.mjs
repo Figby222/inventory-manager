@@ -92,14 +92,8 @@ const createUserPost = [
 ]
 
 const usersListGet = asyncHandler(async (req, res) => {
-    const usersList = [ { usersList: "blah blah blah" } ];
-    console.log("users list query");
-
-    if (usersList.length === 0) {
-        res.status(404).send("error page");
-    }
-
-    res.send("usersList view");
+    const usersList = db.getUserList();
+    res.render("usersList", { users: usersList });
 })
 
 
