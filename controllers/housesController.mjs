@@ -198,14 +198,27 @@ const housesListGet = asyncHandler(async (req, res) => {
 
 
 const updateHousePageGet = asyncHandler(async (req, res) => {
-    const houseDetails = { houseDetails: "blah blah blah" };
-    console.log("house details search query");
+    const houseDetails = db.getHouseDetails(req.params.houseId);
 
     if (!houseDetails) {
-        res.status(404).send("error page");
+        throw new NotFoundError(`House with id ${req.params.houseId} not found`);
     }
 
-    res.send("house update view");
+    res.render("updateHouse", {
+        title: houseDetails.title,
+        price: houseDetails.price,
+        bedroomCount: houseDetails.bedroomCount,
+        bathroomCount: houseDetails.bathroomCount,
+        squareFootage: houseDetails.squareFootage,
+        houseNumber: houseDetails.houseNumber,
+        streetName: houseDetails.streetName,
+        cityName: houseDetails.cityName,
+        stateName: houseDetails.stateName,
+        zipCode: houseDetails.zipCode,
+        countryName: houseDetails.countryName,
+        amenities: houseDetails.amenities,
+        categories: houseDetails.categories
+    })
 })
 
 const updateHousePost = [
