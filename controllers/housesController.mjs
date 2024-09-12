@@ -235,7 +235,7 @@ const updateHousePost = [
             throw new NotFoundError(`House with id ${req.params.houseId} not found`);
         }
 
-        req.updateHouse(req.params.houseId, {
+        db.updateHouse(req.params.houseId, {
             title: req.body.title,
             price: req.body.price,
             bedroomCount: req.body.bedroomCount,
