@@ -51,18 +51,20 @@ const usersListSearchGet = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log("Render usersListSearchGet");
-            res.status(400).send("Users list view component");
+            res.status(400).render("usersList", { errors: errors });
             return;
         }
         
-        const usersList = [ { usersList: "blah blah blah" } ];
-        console.log(`users search list query with ${req.query}`);
+        const usersList = db.getUsersSearchList({
+            username: req.query.username,
+            firstName: req.query.firstName,
+            lastName: req.query.lastName
+        });
     
         if (usersList.length === 0) {
             res.status(404).send("error page");
         }
-        res.send("usersList view");
+        res.render("usersList", { users: usersList });
     })
 ]
 
