@@ -90,6 +90,20 @@ VALUES
     (1, 2),
     (1, 3),
     (1, 4);
+
+INSERT INTO amenities (amenity_name)
+VALUES 
+    ('Pool'),
+    ('Garden'),
+    ('Sauna'),
+    ('Steam room');
+
+INSERT INTO amenities_connection (house_id, amenity_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4);
 `
 
 async function main() {
