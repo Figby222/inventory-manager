@@ -225,7 +225,7 @@ const updateHousePost = [
     createHouseFormValidator,
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty) {
+        if (!errors.isEmpty()) {
             console.log("Render updateHousePageGet with errors");
             res.status(400).send("Update house form view with errors");
             return;
