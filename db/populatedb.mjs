@@ -70,7 +70,7 @@ ALTER TABLE houses
 INSERT INTO users (username, first_name, last_name) 
     VALUES ('Figby222', 'Figby', '222');
 
-INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
+INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
     VALUES ('Ryan''s Estate', 21000000, 'Purchased', 'Not furnished', 44, 44.5, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
 
 
