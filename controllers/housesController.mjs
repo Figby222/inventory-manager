@@ -254,7 +254,11 @@ const updateHousePost = [
 ]
 
 const deleteHousePost = asyncHandler(async (req, res) => {
-    console.log(`Delete hosue query with ${req.params.houseId}`);
+    if (!db.houseExists(req.params.houseId)) {
+        res.redirect("/houses");
+    }
+
+    db.deleteHouse(req.params.houseId);
     res.redirect("/houses");
 })
 
