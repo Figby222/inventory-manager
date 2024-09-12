@@ -160,8 +160,7 @@ const housesListSearchGet = [
 ]
 
 const createHousePageGet = asyncHandler(async (req, res) => {
-    console.log("Create house form view");
-    res.send("Create house form view");
+    res.render("createHouse");
 })
 
 const createHousePost = [
