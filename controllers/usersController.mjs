@@ -8,11 +8,11 @@ const createUserFormValidator = [
         .notEmpty().withMessage("Username field must not be empty")
         .isAlpha().withMessage("Username field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
-    body("firstName")
+    body("first_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("First Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
-    body("lastName")
+    body("last_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
@@ -23,11 +23,11 @@ const searchUserFormValidator = [
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Username field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
-    query("firstName")
+    query("first_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("First Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
-    query("lastName")
+    query("last_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
@@ -42,8 +42,8 @@ const userDetailsGet = asyncHandler(async (req, res)  => {
 
     res.render("userDetails", {
         username: userDetails.username,
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName
+        first_name: userDetails.first_name,
+        last_name: userDetails.last_name
     });
 })
 
@@ -58,8 +58,8 @@ const usersListSearchGet = [
         
         const usersList = await db.getUsersSearchList({
             username: req.query.username,
-            firstName: req.query.firstName,
-            lastName: req.query.lastName
+            first_name: req.query.first_name,
+            last_name: req.query.last_name
         });
     
         if (usersList.length === 0) {
@@ -84,8 +84,8 @@ const createUserPost = [
 
         await db.insertUser({
             username: req.body.username,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName
+            first_name: req.body.first_name,
+            last_name: req.body.last_name
         })
 
         res.redirect("/users");
@@ -109,8 +109,8 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
 
     res.render("userUpdate", {
         username: userDetails.username,
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName
+        first_name: userDetails.first_name,
+        last_name: userDetails.last_name
     });
 })
 
@@ -129,8 +129,8 @@ const updateUserPost = [
 
         await db.updateUser(req.params.userId, {
             username: req.body.username,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName
+            first_name: req.body.first_name,
+            last_name: req.body.last_name
         })
 
         res.redirect("/users");
