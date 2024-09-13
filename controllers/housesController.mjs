@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import { query, body, validationResult } from "expres-validator";
+import { query, body, validationResult } from "express-validator";
 import db from "../db/houseQueries.mjs";
 import NotFoundError from "./util/NotFoundError.mjs";
 
