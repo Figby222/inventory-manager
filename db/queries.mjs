@@ -309,4 +309,13 @@ async function deleteUser(userId) {
     `, userId))
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser }
+async function getUsers() {
+    const { rows } = await Pool.query(`
+        SELECT id, username, CONCAT(first_name, ' ', last_name) as name
+        FROM users
+    `)
+
+    return rows;
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser, getUsers }
