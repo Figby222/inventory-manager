@@ -80,4 +80,76 @@ async function getHousesSearchList(query) {
     return housesList;
 }
 
-export default { getHouseDetails, getHousesSearchList }
+async function asyncForEach(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+        await callback(array[i]);
+    }
+}
+
+async function updateHouse(houseId, query) {
+    await Pool.query(format(`
+        UPDATE houses
+        SET title = %1$L,
+        price = %2$L,
+        bedroom_count = %3$L,
+        bathroom_count = %4$L,
+        square_footage = %5$L,
+        house_number = %6$L,
+        street = %7$L,
+        city = %8$L,
+        state = %9$L,
+        zip_code = %10$L,
+        country = %11$L
+        WHERE houses.id = %12$L
+    `, query.title, query.price, query.bedroom_count, query.bathroom_count, query.square_footage, query.house_number, query.street, query.city, query.state, query.zip_code, query.country, houseId ))
+
+    await Pool.query(format(`
+        DELETE FROM amenities_connection
+        WHERE house_id = %1$L
+        ${!!query.amenity_ids.length ? "AND amenity_id NOT IN (%2$L)" : ""}
+    `, houseId, query.amenity_ids))
+
+    const amenityIdsToAdd = (await Pool.query(format(`
+        SELECT amenities.id FROM amenities
+        WHERE amenities.id IN (%2$L)
+        AND amenities.id NOT IN (
+            SELECT amenity_id FROM amenities_connection
+            WHERE house_id = %1$L
+            AND amenity_id IN (%2$L)
+        )
+    `, houseId, query.amenity_ids)))
+        .rows;
+
+    await asyncForEach(amenityIdsToAdd, async (row) => {
+        await Pool.query(format(`
+            INSERT INTO amenities_connection (house_id, amenity_id)
+            VALUES (%1$L, %2$L)
+        `, houseId, row.id))
+    })
+
+    await Pool.query(format(`
+        DELETE FROM categories_connection
+        WHERE house_id = %1$L
+        ${!!query.category_ids.length ? "AND category_id NOT IN (%2$L)" : ""}
+    `, houseId, query.category_ids))
+
+    const categoryIdsToAdd = (await Pool.query(format(`
+        SELECT categories.id FROM categories
+        WHERE categories.id IN (%2$L)
+        AND categories.id NOT IN (
+            SELECT category_id FROM categories_connection
+            WHERE house_id = %1$L
+            AND category_id IN (%2$L)
+        )
+    `, houseId, query.category_ids)))
+        .rows;
+
+    await asyncForEach(categoryIdsToAdd, async (row) => {
+        await Pool.query(format(`
+            INSERT INTO categories_connection
+            VALUES (%1$L, %2$L)
+        `, houseId, row.id))
+    })
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse }
