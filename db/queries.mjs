@@ -318,4 +318,13 @@ async function getUsers() {
     return rows;
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser, getUsers }
+async function userExists(userId) {
+    const { rows } = await Pool.query(format(`
+        SELECT id FROM users
+        WHERE users.id = %1$L
+    `, userId))
+
+    return !!rows[0];
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser, getUsers, userExists }
