@@ -41,6 +41,7 @@ const userDetailsGet = asyncHandler(async (req, res)  => {
     }
 
     res.render("userDetails", {
+        title: userDetails.username,
         username: userDetails.username,
         first_name: userDetails.first_name,
         last_name: userDetails.last_name
@@ -65,7 +66,7 @@ const usersListSearchGet = [
         if (usersList.length === 0) {
             res.status(404).send("error page");
         }
-        res.render("usersList", { users: usersList });
+        res.render("usersList", { title: "Users", users: usersList });
     })
 ]
 
@@ -108,6 +109,7 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
     }
 
     res.render("userUpdate", {
+        title: userDetails.username,
         username: userDetails.username,
         first_name: userDetails.first_name,
         last_name: userDetails.last_name
