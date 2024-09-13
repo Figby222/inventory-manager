@@ -131,6 +131,7 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
             price: houseDetails.house.price,
             square_footage: houseDetails.house.square_footage,
             furniture_status: houseDetails.house.furniture_status,
+            sale_status: houseDetails.house.sale_status,
             owner_name: houseDetails.house.owner_name,
             listing_agent_name: houseDetails.house.listing_agent_name,
             images: houseDetails.images,
