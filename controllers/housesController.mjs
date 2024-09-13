@@ -116,19 +116,21 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
         throw new NotFoundError(`House with id ${req.params.houseId} not found`);
     }
 
+    console.log(houseDetails);
+
     res.render("houseDetails", {
-        title: houseDetails.title,
+        title: houseDetails.house.title,
         house: {
-            title: houseDetails.title,
-            images: houseDetails.images,
-            address: houseDetails.address,
-            amenities: houseDetails.amenities,
-            bedroom_count: houseDetails.bedroom_count,
-            bathroom_count: houseDetails.bathroom_count,
+            title: houseDetails.house.title,
+            images: houseDetails.house.images,
+            address: houseDetails.house.address,
+            amenities: houseDetails.house.amenities,
+            bedroom_count: houseDetails.house.bedroom_count,
+            bathroom_count: houseDetails.house.bathroom_count,
             furniture_status: houseDetails.furniture_status,
-            price: houseDetails.price,
-            owner_name: houseDetails.owner_name,
-            listing_agent_name: houseDetails.listing_agent_name
+            price: houseDetails.house.price,
+            owner_name: houseDetails.house.owner_name,
+            listing_agent_name: houseDetails.house.listing_agent_name
         }
     })
 })
