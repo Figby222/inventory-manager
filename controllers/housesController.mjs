@@ -155,7 +155,7 @@ const housesListSearchGet = [
         if (houseList.length === 0) {
             res.status(404).render("houseList");
         }
-        res.render("houseList");
+        res.render("houseList", { title: "Houses"});
     })
 ]
 
@@ -191,7 +191,7 @@ const createHousePost = [
 
 const housesListGet = asyncHandler(async (req, res) => {
     const housesList = await db.getHousesList();
-    res.render("housesList", { houses: housesList });
+    res.render("housesList", { title: "Houses", houses: housesList });
 })
 
 
