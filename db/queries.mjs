@@ -275,4 +275,14 @@ async function getUsersSearchList(query) {
     return rows;
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList }
+async function updateUser(userId, query) {
+    await Pool.query(format(`
+        UPDATE users
+        SET username = %1$L,
+        first_name = %2$L,
+        last_name = %3$L
+        WHERE users.id = %4$L
+    `, query.username, query.first_name, query.last_name, userId))
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser }
