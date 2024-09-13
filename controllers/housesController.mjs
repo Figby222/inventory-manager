@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { query, body, validationResult } from "expres-validator";
-import db from "../db/queries.mjs";
+import db from "../db/houseQueries.mjs";
 import NotFoundError from "./util/NotFoundError.mjs";
 
 const createHouseFormValidator = [
