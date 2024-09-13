@@ -211,4 +211,12 @@ async function createHouse(query) {
     `, houseId, query.owner_id))
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse }
+async function getAmenities() {
+    const { rows } = await Pool.query(`
+        SELECT * FROM amenities
+    `)
+
+    return rows;
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities }
