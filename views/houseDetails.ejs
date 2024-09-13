@@ -25,7 +25,7 @@
                     <h2 class="house-amenities-heading">Amenities: </h2>
                     <ul class="house-amenities">
                         <% house.amenities.forEach((amenity) => { %>
-                            <li class="house-amenity"><%= amenity %></li>
+                            <li class="house-amenity"><%= amenity.amenity_name %></li>
                         <% }) %>
                     </ul>
                 <% } %>
