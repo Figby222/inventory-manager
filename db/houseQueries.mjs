@@ -45,7 +45,7 @@ async function getHouseDetails(houseId) {
 async function getHousesSearchList(query) {
     const housesList = (await Pool.query(
         format(`
-            SELECT DISTINCT houses.id, title, price, bedroom_count, bathroom_count, square_footage, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address
+            SELECT DISTINCT houses.id, title, price, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, country, zip_code
             FROM houses
             LEFT JOIN amenities_connection
             ON houses.id=amenities_connection.house_id
@@ -236,7 +236,7 @@ async function deleteHouse(houseId) {
 
 async function getHousesList() {
     const { rows } = await Pool.query(`
-        SELECT id, title, bedroom_count, bathroom_count, square_footage, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address
+        SELECT id, title, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, country, zip_code
         FROM houses
     `)
 
