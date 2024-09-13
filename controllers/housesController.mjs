@@ -11,35 +11,35 @@ const createHouseFormValidator = [
         .notEmpty().withMessage("Price field must not be empty")
         .isNumeric().withMessage("Price field must be a number")
         .isInt({ min: 10000 }).withMessage("Price field must be at least $10,000"),
-    body("bedroomCount")
+    body("bedroom_count")
         .notEmpty().withMessage("Bedrooms field must not be empty")
         .isNumeric().withMessage("Bedrooms field must be a number")
         .isFloat({ min: 0 }).withMessage("Bedrooms field must be above 0"),
-    body("bathroomCount")
+    body("bathroom_count")
         .notEmpty().withMessage("Bathrooms field must not be empty")
         .isNumeric().withMessage("Bathrooms field must be a number")
         .isFloat({ min: 0 }).withMessage("Bathrooms field must be above 0"),
-    body("squareFootage")
+    body("square_footage")
         .notEmpty().withMessage("Square Ft. field must not be empty")
         .isNumeric().withMessage("Square Ft. field must be a number")
         .isInt({ min: 0 }).withMessage("Square Ft. field must be above 0"),
-    body("houseNumber")
+    body("house_number")
         .notEmpty().withMessage("House Number field must not be empty")
         .isNumeric().withMessage("House Number field must be a number")
         .isInt({ min: 0 }).withMessage("House Number field must be above 0"),
-    body("streetName")
+    body("street_name")
         .notEmpty().withMessage("Street field must not be empty")
         .isAlpha().withMessage("Street field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
-    body("cityName")
+    body("city_name")
         .notEmpty().withMessage("City field must not be empty")
         .isAlpha().withMessage("City field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
-    body("zipCode")
+    body("zip_code")
         .notEmpty().withMessage("Zip/Postal Code field must not be empty")
         .isNumeric().withMessage("Zip/Postal Code field must be a number")
         .isInt({ min: 0, max: 99999 }).withMessage("Zip/Postal Code field must be between 00000 and 99999"),
-    body("countryName")
+    body("country_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
@@ -64,35 +64,35 @@ const searchHouseFormValidator = [
         .optional({ values: "falsy" })
         .isNumeric().withMessage("Price field must be a number")
         .isInt({ min: 10000 }).withMessage("Price field must be at least $10,000"),
-    query("bedroomCount")
+    query("bedroom_count")
         .optional({ values: "falsy" })
         .isNumeric().withMessage("Bedrooms field must be a number")
         .isFloat({ min: 0 }).withMessage("Bedrooms field must be above 0"),
-    query("bathroomCount")
+    query("bathroom_count")
         .optional({ values: "falsy" })
         .isNumeric().withMessage("Bathrooms field must be a number")
         .isFloat({ min: 0 }).withMessage("Bathrooms field must be above 0"),
-    query("squareFootage")
+    query("square_footage")
         .optional({ values: "falsy" })
         .isNumeric().withMessage("Square Ft. field must be a number")
         .isInt({ min: 0 }).withMessage("Square Ft. field must be above 0"),
-    query("houseNumber")
+    query("house_number")
         .optional({ values: "falsy" })
         .isNumeric().withMessage("House Number field must be a number")
         .isInt({ min: 0 }).withMessage("House Number field must be above 0"),
-    query("streetName")
+    query("street_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Street field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
-    query("cityName")
+    query("city_name")
         /optional({ values: "falsy" })
         .isAlpha().withMessage("City field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
-    query("zipCode")
+    query("zip_code")
         .optional({ values: "falsy" })
         .isNumeric().withMessage("Zip/Postal Code field must be a number")
         .isInt({ min: 0, max: 99999 }).withMessage("Zip/Postal Code field must be between 00000 and 99999"),
-    query("countryName")
+    query("country_name")
         .optional({ values: "falsy" })
         .isAlpha().withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
@@ -121,12 +121,12 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
         images: houseDetails.images,
         address: houseDetails.address,
         amenities: houseDetails.amenities,
-        bedroomCount: houseDetails.bedroomCount,
-        bathroomCount: houseDetails.bathroomCount,
-        furnitureStatus: houseDetails.furnitureStatus,
+        bedroom_count: houseDetails.bedroom_count,
+        bathroom_count: houseDetails.bathroom_count,
+        furniture_status: houseDetails.furniture_status,
         price: houseDetails.price,
-        ownerName: houseDetails.ownerName,
-        listingAgentName: houseDetails.listingAgentName
+        owner_name: houseDetails.owner_name,
+        listing_agent_name: houseDetails.listing_agent_name
     })
 })
 
@@ -141,13 +141,13 @@ const housesListSearchGet = [
         
         const houseList = await db.getHousesSearchList({
             title: req.query.title,
-            minimumPrice: req.query.minimumPrice,
-            maximumPrice: req.query.maximumPrice,
-            minimumBedrooms: req.query.minimumBedrooms,
-            maximumBedrooms: req.query.maximumBedrooms,
-            minimumSquareFootage: req.query.minimumSquareFootage,
-            maximumSquareFootage: req.query.maximumSquareFootage,
-            furnitureStatus: req.query.furnitureStatus,
+            minimum_price: req.query.minimum_price,
+            maximum_price: req.query.maximum_price,
+            minimum_bedrooms: req.query.minimum_bedrooms,
+            maximum_bedrooms: req.query.maximum_bedrooms,
+            minimum_square_footage: req.query.minimum_square_footage,
+            maximum_square_footage: req.query.maximum_square_footage,
+            furniture_status: req.query.furniture_status,
             amentities: req.query.amenities,
             categories: req.query.categories
         })
@@ -175,14 +175,14 @@ const createHousePost = [
         await db.insertHouse({
             title: req.body.title,
             price: req.body.price,
-            bedroomCount: req.body.bedroomCount,
-            bathroomCount: req.body.bathroomCount,
-            squareFootage: req.body.squareFootage,
-            houseNumber: req.body.houseNumber,
-            cityName: req.body.cityName,
-            stateName: req.body.stateName,
-            zipCode: req.body.zipCode,
-            countryName: req.body.countryName,
+            bedroom_count: req.body.bedroom_count,
+            bathroom_count: req.body.bathroom_count,
+            square_footage: req.body.square_footage,
+            house_number: req.body.house_number,
+            city_name: req.body.city_name,
+            state_name: req.body.state_name,
+            zip_code: req.body.zip_code,
+            country_name: req.body.country_name,
         })
         
         res.redirect("/houses");
@@ -207,15 +207,15 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
     res.render("updateHouse", {
         title: houseDetails.title,
         price: houseDetails.price,
-        bedroomCount: houseDetails.bedroomCount,
-        bathroomCount: houseDetails.bathroomCount,
-        squareFootage: houseDetails.squareFootage,
-        houseNumber: houseDetails.houseNumber,
-        streetName: houseDetails.streetName,
-        cityName: houseDetails.cityName,
-        stateName: houseDetails.stateName,
-        zipCode: houseDetails.zipCode,
-        countryName: houseDetails.countryName,
+        bedroom_count: houseDetails.bedroom_count,
+        bathroom_count: houseDetails.bathroom_count,
+        square_footage: houseDetails.square_footage,
+        house_number: houseDetails.house_number,
+        street_name: houseDetails.street_name,
+        city_name: houseDetails.city_name,
+        state_name: houseDetails.state_name,
+        zip_code: houseDetails.zip_code,
+        country_name: houseDetails.country_name,
         amenities: houseDetails.amenities,
         categories: houseDetails.categories
     })
@@ -238,15 +238,15 @@ const updateHousePost = [
         await db.updateHouse(req.params.houseId, {
             title: req.body.title,
             price: req.body.price,
-            bedroomCount: req.body.bedroomCount,
-            bathroomCount: req.body.bathroomCount,
-            squareFootage: req.body.squareFootage,
-            houseNumber: req.body.houseNumber,
-            streetName: req.body.streetName,
-            cityName: req.body.cityName,
-            stateName: req.body.stateName,
-            zipCode: req.body.zipCode,
-            countryName: req.body.countryName
+            bedroom_count: req.body.bedroom_count,
+            bathroom_count: req.body.bathroom_count,
+            square_footage: req.body.square_footage,
+            house_number: req.body.house_number,
+            street_name: req.body.street_name,
+            city_name: req.body.city_name,
+            state_name: req.body.state_name,
+            zip_code: req.body.zip_code,
+            country_name: req.body.country_name
         })
         
         res.redirect("/houses");
