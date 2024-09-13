@@ -227,4 +227,31 @@ async function getCategories() {
     return rows;
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories }
+async function deleteHouse(houseId) {
+    await Pool.query(format(`
+        DELETE FROM images
+        WHERE house_id = %1$L
+    `, houseId))
+
+    await Pool.query(format(`
+        DELETE FROM owners_connection
+        WHERE house_id = %1$L
+    `, houseId))
+
+    await Pool.query(format(`
+        DELETE FROM categories_connection
+        WHERE house_id = %1$L
+    `, houseId))
+
+    await Pool.query(format(`
+        DELETE FROM amenities_connection
+        WHERE house_id = %1$L
+    `, houseId))
+    
+    await Pool.query(format(`
+        DELETE FROM houses
+        WHERE houses.id = %1$L
+    `, houseId))
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse }
