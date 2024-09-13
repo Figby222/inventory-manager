@@ -210,6 +210,8 @@ const housesListGet = asyncHandler(async (req, res) => {
 
 const updateHousePageGet = asyncHandler(async (req, res) => {
     const houseDetails = await db.getHouseDetails(req.params.houseId);
+    const amenities = await db.getAmenities();
+    const categories = await db.getCategories();
 
     if (!houseDetails) {
         throw new NotFoundError(`House with id ${req.params.houseId} not found`);
@@ -232,7 +234,9 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
             country_name: houseDetails.country_name,
             amenities: houseDetails.amenities,
             categories: houseDetails.categories
-        }
+        },
+        amenities: amenities,
+        categories: categories
     })
 })
 
