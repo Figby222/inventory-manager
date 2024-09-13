@@ -218,20 +218,20 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
     }
 
     res.render("updateHouse", {
-        title: houseDetails.title,
+        title: houseDetails.house.title,
         house: {
-            title: houseDetails.title,
-            id: houseDetails.id,
-            price: houseDetails.price,
-            bedroom_count: houseDetails.bedroom_count,
-            bathroom_count: houseDetails.bathroom_count,
-            square_footage: houseDetails.square_footage,
-            house_number: houseDetails.house_number,
-            street_name: houseDetails.street_name,
-            city_name: houseDetails.city_name,
-            state_name: houseDetails.state_name,
-            zip_code: houseDetails.zip_code,
-            country_name: houseDetails.country_name,
+            title: houseDetails.house.title,
+            id: houseDetails.house.id,
+            price: houseDetails.house.price,
+            bedroom_count: houseDetails.house.bedroom_count,
+            bathroom_count: houseDetails.house.bathroom_count,
+            square_footage: houseDetails.house.square_footage,
+            house_number: houseDetails.house.house_number,
+            street_name: houseDetails.house.street_name,
+            city_name: houseDetails.house.city_name,
+            state_name: houseDetails.house.state_name,
+            zip_code: houseDetails.house.zip_code,
+            country_name: houseDetails.house.country_name,
             amenities: houseDetails.amenities,
             categories: houseDetails.categories
         },
