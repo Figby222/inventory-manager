@@ -254,4 +254,13 @@ async function deleteHouse(houseId) {
     `, houseId))
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse }
+async function getHouses() {
+    const { rows } = await Pool.query(`
+        SELECT id, title, bedroom_count, bathroom_count, square_footage, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address
+        FROM houses
+    `)
+
+    return rows;
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses }
