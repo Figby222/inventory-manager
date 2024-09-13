@@ -234,7 +234,7 @@ async function deleteHouse(houseId) {
     `, houseId))
 }
 
-async function getHouses() {
+async function getHousesList() {
     const { rows } = await Pool.query(`
         SELECT id, title, bedroom_count, bathroom_count, square_footage, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address
         FROM houses
@@ -253,4 +253,4 @@ async function houseExists(houseId) {
     return !!rows[0];
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists }
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHousesList, houseExists }
