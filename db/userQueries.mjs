@@ -56,7 +56,7 @@ async function deleteUser(userId) {
     `, userId))
 }
 
-async function getUsers() {
+async function getUsersList() {
     const { rows } = await Pool.query(`
         SELECT id, username, CONCAT(first_name, ' ', last_name) as name
         FROM users
@@ -74,4 +74,4 @@ async function userExists(userId) {
     return !!rows[0];
 }
 
-export default { getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser, getUsers, userExists }
+export default { getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser, getUsersList, userExists }
