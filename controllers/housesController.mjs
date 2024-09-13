@@ -217,6 +217,7 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
 
     res.render("updateHouse", {
         title: houseDetails.title,
+        id: houseDetails.id,
         price: houseDetails.price,
         bedroom_count: houseDetails.bedroom_count,
         bathroom_count: houseDetails.bathroom_count,
