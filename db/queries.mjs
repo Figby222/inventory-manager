@@ -300,4 +300,13 @@ async function createUser(query) {
     ))
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser }
+async function deleteUser(userId) {
+    await Pool.query(format(`
+        DELETE
+        FROM users
+        WHERE users.id = %1$L
+        RETURNING *
+    `, userId))
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser, deleteUser }
