@@ -263,4 +263,14 @@ async function getHouses() {
     return rows;
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses }
+async function houseExists(houseId) {
+    const { rows } = await Pool.query(format(`
+        SELECT id
+        FROM houses
+        WHERE id = %1$L
+    `, houseId))
+
+    return !!rows[0];
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists }
