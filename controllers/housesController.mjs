@@ -85,7 +85,7 @@ const searchHouseFormValidator = [
         .isAlpha().withMessage("Street field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
     query("city_name")
-        /optional({ values: "falsy" })
+        .optional({ values: "falsy" })
         .isAlpha().withMessage("City field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
     query("zip_code")
