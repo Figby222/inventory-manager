@@ -285,4 +285,19 @@ async function updateUser(userId, query) {
     `, query.username, query.first_name, query.last_name, userId))
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser }
+async function createUser(query) {
+    await Pool.query(format(`
+            INSERT INTO users (username, first_name, last_name)
+            VALUES (
+                %1$L,
+                %2$L,
+                %3$L
+            )
+        `,
+        query.username,
+        query.first_name,
+        query.last_name
+    ))
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList, updateUser, createUser }
