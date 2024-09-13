@@ -85,3 +85,17 @@ category_id (foreign key),
 table for categories with columns
 id (primary key),
 category_name,
+
+updateHouse()
+remove amenities_connection where house_id from params
+and amenity_id not in (amenity_ids from params)
+
+query current_amenity_ids from amenities_connection where house_id from params
+remove duplicates from amenity_ids and current_amenity_ids
+
+add amenities_connection with amenity_ids and house_id
+
+do the same with categories
+
+for the rest of the stuff,
+set column to new value IF the new value is in the query arg and is not null

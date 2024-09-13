@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS amenities (
     );
 
 CREATE TABLE IF NOT EXISTS amenities_connection (
-    house_id INTEGER REFERENCES houses (id) NOT NULL,
-    amenity_id INTEGER REFERENCES amenities (id) NOT NULL
+    house_id INTEGER REFERENCES houses (id) ON DELETE CASCADE NOT NULL,
+    amenity_id INTEGER REFERENCES amenities (id) ON DELETE CASCADE NOT NULL
 );
 
 
@@ -40,15 +40,15 @@ CREATE TABLE IF NOT EXISTS users (
     );
 
 CREATE TABLE IF NOT EXISTS owners_connection (
-    house_id INTEGER REFERENCES houses (id) NOT NULL,
-    owner_id INTEGER REFERENCES users (id) NOT NULL
+    house_id INTEGER REFERENCES houses (id) ON DELETE CASCADE NOT NULL,
+    owner_id INTEGER REFERENCES users (id) ON DELETE CASCADE NOT NULL
 );
     
 CREATE TABLE IF NOT EXISTS images (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     image_href TEXT NOT NULL,
     view_index NUMERIC ( 3 ) CONSTRAINT positive_view_index CHECK (view_index >= 0) NOT NULL,
-    house_id INTEGER REFERENCES houses (id) NOT NULL,
+    house_id INTEGER REFERENCES houses (id) ON DELETE CASCADE NOT NULL,
     UNIQUE (house_id, view_index)
 );
 
@@ -59,18 +59,18 @@ CREATE TABLE IF NOT EXISTS categories (
     );
     
 CREATE TABLE IF NOT EXISTS categories_connection (
-    house_id INTEGER REFERENCES houses (id),
-    category_id INTEGER REFERENCES categories (id)
+    house_id INTEGER REFERENCES houses (id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES categories (id) ON DELETE CASCADE
 );
 
 ALTER TABLE houses 
     ADD CONSTRAINT houses_listing_agent_fk FOREIGN KEY (listing_agent_id)
-    REFERENCES users (id);
+    REFERENCES users (id) ON DELETE RESTRICT;
 
 INSERT INTO users (username, first_name, last_name) 
     VALUES ('Figby222', 'Figby', '222');
 
-INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
+INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, zip_code, listing_agent_id) 
     VALUES ('Ryan''s Estate', 21000000, 'Purchased', 'Not furnished', 44, 44.5, 64000, 64, 'Awesome street', 'Awesome City', 'Awesome State', 64000, 1);
 
 
@@ -85,6 +85,20 @@ VALUES
     ('Ocean view');
 
 INSERT INTO categories_connection (house_id, category_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4);
+
+INSERT INTO amenities (amenity_name)
+VALUES 
+    ('Pool'),
+    ('Garden'),
+    ('Sauna'),
+    ('Steam room');
+
+INSERT INTO amenities_connection (house_id, amenity_id)
 VALUES
     (1, 1),
     (1, 2),
