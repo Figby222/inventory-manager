@@ -263,4 +263,16 @@ async function getUserDetails(userId) {
     return rows[0];
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails }
+async function getUsersSearchList(query) {
+    const { rows } = await Pool.query(format(`
+        SELECT username, CONCAT(first_name, ' ', last_name) as name
+        FROM users
+        WHERE LOWER(username) LIKE LOWER(%1$L)
+        ${!!query.first_name ? "AND LOWER(first_name) LIKE LOWER(%2$L)" : ""}
+        ${!!query.last_name ? "AND LOWER(last_name) LIKE LOWER(%3$L)" : ""}
+    `, ('%' + query.username + '%'), ('%' + query.first_name + '%'), ('%' + query.last_name + '%')))
+
+    return rows;
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHouses, houseExists, getUserDetails, getUsersSearchList }
