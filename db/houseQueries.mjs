@@ -4,7 +4,7 @@ import format from "pg-format";
 async function getHouseDetails(houseId) {
     const house = (await Pool.query(`
         SELECT title, price, CONCAT(house_number, ' ', street, ', ', city, ', ', state, ', ', country, ', ', zip_code) as address,
-        bedroom_count, bathroom_count, furniture_status, owner.username AS owner_name, listing_agent.username AS listing_agent_name
+        bedroom_count, bathroom_count, square_footage, furniture_status, owner.username AS owner_name, listing_agent.username AS listing_agent_name
         FROM houses
         JOIN owners_connection ON houses.id=owners_connection.house_id
         JOIN users owner ON owners_connection.owner_id=owner.id
