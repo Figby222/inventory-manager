@@ -41,6 +41,17 @@
                 <p class="owner-name">Owner: <%= house.owner_name %></p>
                 <p class="listing-agent-name">Listing agent: <%= house.listing_agent_name %></p>"
             </section>
+            <% if (locals.house.categories) { %>
+                <section class="house-categories">
+                    <h2 class="house-categories-heading">Categories: </h2>
+                    <ul class="house-categories-list">
+                        <% house.categories.forEach((category) => { %>
+                            <li class="house-category"><%= category.category_name %></li>
+                        <% }) %>
+                        
+                    </ul>
+                </section>
+            <% } %>
 
         </main>
     </body>
