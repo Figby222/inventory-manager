@@ -152,4 +152,63 @@ async function updateHouse(houseId, query) {
     })
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse }
+async function createHouse(query) {
+    const houseId = (await Pool.query(format(`
+            INSERT INTO houses (title, price, sale_status, furniture_status, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, zip_code, country, listing_agent_id)
+            VALUES (
+                %1$L,
+                %2$L,
+                %3$L,
+                %4$L,
+                %5$L,
+                %6$L,
+                %7$L,
+                %8$L,
+                %9$L,
+                %10$L,
+                %11$L,
+                %12$L,
+                %13$L,
+                %14$L
+            )
+            RETURNING houses.id
+        `, 
+        query.title, 
+        query.price, 
+        query.sale_status, 
+        query.furniture_status, 
+        query.bedroom_count, 
+        query.bathroom_count, 
+        query.square_footage, 
+        query.house_number, 
+        query.street, 
+        query.city, 
+        query.state, 
+        query.zip_code, 
+        query.country, 
+        query.listing_agent_id
+    )))
+        .rows[0].id;
+
+    await asyncForEach(query.amenity_ids, async (amenity_id) => {
+        await Pool.query(format(`
+            INSERT INTO amenities_connection (house_id, amenity_id)
+            VALUES (%1$L, %2$L)
+        `, houseId, amenity_id))
+    })
+
+    await asyncForEach(query.category_ids, async (category_id) => {
+        await Pool.query(format(`
+            INSERT INTO categories_connection (house_id, category_id)
+            VALUES (%1$L, %2$L)
+        `, houseId, category_id))
+    })
+    
+    await Pool.query(format(`
+        INSERT INTO owners_connection (house_id, owner_id)
+        VALUES (%1$L, %2$L)
+        RETURNING *
+    `, houseId, query.owner_id))
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse }
