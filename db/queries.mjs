@@ -219,4 +219,12 @@ async function getAmenities() {
     return rows;
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities }
+async function getCategories() {
+    const { rows } = await Pool.query(`
+        SELECT * FROM categories
+    `)
+
+    return rows;
+}
+
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories }
