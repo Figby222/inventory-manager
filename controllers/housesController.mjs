@@ -261,7 +261,7 @@ const updateHousePost = [
         if (!errors.isEmpty()) {
             res.status(400).render("updateHouse", { 
                 title: "Update House", 
-                errors: errors,
+                errors: errors.errors,
                 house: houseDetails 
             });
             return;
