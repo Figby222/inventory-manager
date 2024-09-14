@@ -63,7 +63,7 @@
                     <% categories.forEach((category) => { %>
                         <li class="category">
                             <input type="checkbox" 
-                                name="categories" 
+                                name="category_ids" 
                                 id="<%= category.category_name %>" 
                                 value="<%= category.id %>"
                                 checked="<%= house.categories.includes(category) ? true : false %>" 
