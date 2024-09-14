@@ -202,7 +202,15 @@ const createHousePost = [
 
 const housesListGet = asyncHandler(async (req, res) => {
     const housesList = await db.getHousesList();
-    res.render("housesList", { title: "Houses", houses: housesList });
+    const amenities = await db.getAmenities();
+    const categories = await db.getCategories();
+
+    res.render("housesList", { 
+        title: "Houses", 
+        houses: housesList, 
+        amenities: amenities, 
+        categories: categories 
+    });
 })
 
 
