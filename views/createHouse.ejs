@@ -56,7 +56,7 @@
                     <ul class="categories-list">
                         <% categories.forEach((category) => { %>
                             <li class="category">
-                                <input type="checkbox" name="categories" id="<%= category %>" value="<%= category %>" />
+                                <input type="checkbox" name="categories" id="<%= category.category_name %>" value="<%= category.id %>" />
                                 <label for="<%= category %>"><%= category %></label>
                             </li>
                         <% }) %>
