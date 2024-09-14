@@ -81,7 +81,7 @@
                     <ul class="amenities-list">
                         <% amenities.forEach((amenity) => { %>
                             <li>
-                                <input type="checkbox" name="amenities" id="<%= amenity %>" value="<%= amenity %>" />
+                                <input type="checkbox" name="amenities" id="<%= amenity.amenity_name %>" value="<%= amenity.id %>" />
                                 <label for="<%= amenity %>" class="amenity-label"><%= amenity %></label>
                             </li>
                         <% }) %>
