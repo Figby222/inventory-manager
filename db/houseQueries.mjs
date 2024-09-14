@@ -31,7 +31,7 @@ async function getHouseDetails(houseId) {
         .rows;
     
     const categories = (await Pool.query(`
-        SELECT category_name
+        SELECT id, category_name
         FROM categories
         JOIN categories_connection 
         ON categories.id=categories_connection.category_id
