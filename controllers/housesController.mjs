@@ -171,7 +171,11 @@ const housesListSearchGet = [
 ]
 
 const createHousePageGet = asyncHandler(async (req, res) => {
-    res.render("createHouse");
+    const amenities = await db.getAmenities();
+    const categories = await db.getCategories();
+    console.log(amenities);
+
+    res.render("createHouse", { title: "Create a house", amenities: amenities, categories: categories });
 })
 
 const createHousePost = [
