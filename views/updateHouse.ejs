@@ -66,7 +66,9 @@
                                 name="category_ids" 
                                 id="<%= category.category_name %>" 
                                 value="<%= category.id %>"
-                                checked="<%= house.categories.includes(category) ? true : false %>" 
+                                <% if (house.categories.find((current) => current.id === category.id)) { %>
+                                    checked
+                                <% } %>
                             />
                             <label for="<%= category.category_name %>"><%= category.category_name %></label>
                         </li>
