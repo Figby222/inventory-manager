@@ -64,8 +64,8 @@
                         <li class="category">
                             <input type="checkbox" 
                                 name="categories" 
-                                id="<%= category %>" 
-                                value="<%= category %>"
+                                id="<%= category.category_name %>" 
+                                value="<%= category.id %>"
                                 checked="<%= house.categories.includes(category) ? true : false %>" 
                             />
                             <label for="<%= category %>"><%= category %></label>
