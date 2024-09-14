@@ -255,9 +255,15 @@ const updateHousePageGet = asyncHandler(async (req, res) => {
 const updateHousePost = [
     createHouseFormValidator,
     asyncHandler(async (req, res) => {
+        const houseDetails = db.getHouseDetails(req.params.houseId);
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("updateHouse", { title: "Update House", errors: errors });
+            res.status(400).render("updateHouse", { 
+                title: "Update House", 
+                errors: errors,
+                house: houseDetails 
+            });
             return;
         }
 
