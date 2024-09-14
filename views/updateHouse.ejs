@@ -48,7 +48,9 @@
                                 name="amenity_ids" 
                                 id="<%= amenity.amenity_name %>" 
                                 value="<%= amenity.id %>"
-                                checked="<%= house.amenities.includes(amenity) ? true : false %>" 
+                                <% if (house.amenities.find((current) => current.id === amenity.id)) { %>
+                                    checked
+                                <% } %>
                             />
                             <label for="<%= amenity.amenity_name %>"><%= amenity.amenity_name %></label>
                         </li>
