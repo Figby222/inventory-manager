@@ -171,7 +171,7 @@ const housesListSearchGet = [
 ]
 
 const createHousePageGet = asyncHandler(async (req, res) => {
-    res.render("createHouse");
+    res.render("createHouse", { title: "Create a house" });
 })
 
 const createHousePost = [
