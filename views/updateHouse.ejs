@@ -68,7 +68,7 @@
                                 value="<%= category.id %>"
                                 checked="<%= house.categories.includes(category) ? true : false %>" 
                             />
-                            <label for="<%= category %>"><%= category %></label>
+                            <label for="<%= category.category_name %>"><%= category.category_name %></label>
                         </li>
                     <% }) %>
                 </ul>
