@@ -257,7 +257,7 @@ const updateHousePost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("updateHouse", { errors: errors });
+            res.status(400).render("updateHouse", { title: "Update House", errors: errors });
             return;
         }
 
