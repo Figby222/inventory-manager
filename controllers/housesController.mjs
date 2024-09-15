@@ -260,12 +260,14 @@ const updateHousePost = [
         if (!errors.isEmpty()) {
             const houseDetails = await db.getHouseDetails(req.params.houseId);
             const amenities = await db.getAmenities();
+            const categories = await db.getCategories();
 
             res.status(400).render("updateHouse", { 
                 title: "Update House", 
                 errors: errors.errors,
                 house: houseDetails,
                 amenities: amenities,
+                categories: categories,
             });
             return;
         }
