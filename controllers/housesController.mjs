@@ -160,7 +160,7 @@ const housesListSearchGet = [
             maximum_square_footage: req.query.maximum_square_footage,
             furniture_status: req.query.furniture_status,
             amentities: req.query.amenities,
-            categories: req.query.categories
+            category_ids: req.query.category_ids
         })
     
         if (houseList.length === 0) {
