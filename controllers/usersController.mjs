@@ -97,7 +97,7 @@ const createUserPost = [
 ]
 
 const usersListGet = asyncHandler(async (req, res) => {
-    const usersList = await db.getUserList();
+    const usersList = await db.getUsersList();
     res.render("usersList", { users: usersList });
 })
 
