@@ -56,7 +56,7 @@ const usersListSearchGet = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("usersList", { errors: errors });
+            res.status(400).render("usersList", { title: "Users", errors: errors });
             return;
         }
         
