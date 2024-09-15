@@ -109,6 +109,7 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
     }
 
     res.render("updateUser", {
+        title: userDetails.username,
         user: {
             title: userDetails.username,
             username: userDetails.username,
