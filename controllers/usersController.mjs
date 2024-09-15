@@ -82,7 +82,13 @@ const createUserPost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("createUser", { title: "Create a User", errors: errors.errors });
+            res.status(400).render("createUser", { 
+                title: "Create a User", 
+                errors: errors.errors, 
+                user: { 
+                    ...req.body 
+                } 
+            });
             return;
         }
 
