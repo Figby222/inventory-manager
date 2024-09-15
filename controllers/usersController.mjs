@@ -128,11 +128,12 @@ const updateUserPost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
+            const userDetails = await db.getUserDetails(req.params.userId);
             res.status(400).render("updateUser", { 
                 title: "Update User", 
                 errors: errors, 
                 user: {
-                    ...req.body
+                    ...userDetails
                 } 
             });
             return;
