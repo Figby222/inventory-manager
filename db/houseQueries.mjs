@@ -60,8 +60,8 @@ async function getHousesSearchList(query) {
             ${!!query.minimum_square_footage ? "AND square_footage >= %6$L" : ""}
             ${!!query.maximum_square_footage ? "AND square_footage <= %7$L" : ""}
             ${!!query.furniture_status ? "AND LOWER(furniture_status) LIKE LOWER(%8$L)" : ""}
-            ${!!query.category_ids ? "AND categories.id IN (%9$L)" : ""}
-            ${!!query.amenity_ids ? "AND amenities.id IN (%10$L)" : ""}
+            ${!!query.category_ids.length ? "AND categories.id IN (%9$L)" : ""}
+            ${!!query.amenity_ids.length ? "AND amenities.id IN (%10$L)" : ""}
             
         `, 
         ("%" + query.title + "%"),
@@ -106,7 +106,7 @@ async function updateHouse(houseId, query) {
     await Pool.query(format(`
         DELETE FROM amenities_connection
         WHERE house_id = %1$L
-        ${!!query.amenity_ids.length ? "AND amenity_id NOT IN (%2$L)" : ""}
+        ${!!query.amenity_ids.length.length ? "AND amenity_id NOT IN (%2$L)" : ""}
     `, houseId, query.amenity_ids))
 
     const amenityIdsToAdd = (await Pool.query(format(`
@@ -130,7 +130,7 @@ async function updateHouse(houseId, query) {
     await Pool.query(format(`
         DELETE FROM categories_connection
         WHERE house_id = %1$L
-        ${!!query.category_ids.length ? "AND category_id NOT IN (%2$L)" : ""}
+        ${!!query.category_ids.length.length ? "AND category_id NOT IN (%2$L)" : ""}
     `, houseId, query.category_ids))
 
     const categoryIdsToAdd = (await Pool.query(format(`
