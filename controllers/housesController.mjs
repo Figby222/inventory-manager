@@ -49,7 +49,7 @@ const createHouseFormValidator = [
         .optional({ values: "falsy" }),
     body("amenity_ids")
         .toArray()
-        .optional({ values: "falsy" }),
+        .default([]),
     body("category_ids")
         .toArray()
         .optional({ values: "falsy" }),
@@ -102,7 +102,7 @@ const searchHouseFormValidator = [
         .optional({ values: "falsy" }),
     query("amenity_ids")
         .toArray()
-        .optional({ values: "falsy" }),
+        .default([]),
     query("category_ids")
         .toArray()
         .optional({ values: "falsy" }),
