@@ -187,7 +187,7 @@ const createHousePost = [
             return;
         }
 
-        await db.insertHouse({
+        await db.createHouse({
             title: req.body.title,
             price: req.body.price,
             bedroom_count: req.body.bedroom_count,
