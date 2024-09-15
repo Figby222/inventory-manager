@@ -43,11 +43,11 @@ const createHouseFormValidator = [
         .optional({ values: "falsy" })
         .isAlpha('en-US', { ignore: ' ' }).withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
-    body("amenities[*]")
+    body("amenity_ids[*]")
         .optional({ values: "falsy" }),
     body("categories[*]")
         .optional({ values: "falsy" }),
-    body("amenities")
+    body("amenity_ids")
         .toArray()
         .optional({ values: "falsy" }),
     body("categories")
@@ -96,11 +96,11 @@ const searchHouseFormValidator = [
         .optional({ values: "falsy" })
         .isAlpha('en-US', { ignore: ' ' }).withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
-    query("amenities[*]")
+    query("amenity_ids[*]")
         .optional({ values: "falsy" }),
     query("categories[*]")
         .optional({ values: "falsy" }),
-    query("amenities")
+    query("amenity_ids")
         .toArray()
         .optional({ values: "falsy" }),
     query("categories")
