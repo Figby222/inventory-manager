@@ -189,6 +189,7 @@ const createHousePost = [
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
             const houseAmenities = await db.getAmenitiesSearch(req.body.amenity_ids);
+            const houseCategories = await db.getCategoriesSearch(req.body.category_ids);
             const amenities = await db.getAmenities();
             const categories = await db.getCategories();
             res.status(400).render("createHouse", { 
