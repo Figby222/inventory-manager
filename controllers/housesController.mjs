@@ -52,7 +52,7 @@ const createHouseFormValidator = [
         .default([]),
     body("category_ids")
         .toArray()
-        .optional({ values: "falsy" }),
+        .default([]),
         
 ]
 
@@ -105,7 +105,7 @@ const searchHouseFormValidator = [
         .default([]),
     query("category_ids")
         .toArray()
-        .optional({ values: "falsy" }),
+        .default([]),
         
 ]
 
