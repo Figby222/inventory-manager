@@ -6,7 +6,7 @@ const SQL = `CREATE TABLE IF NOT EXISTS houses (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     title VARCHAR ( 30 ) NOT NULL,
     price NUMERIC(10) CONSTRAINT positive_price CHECK (price > 0) NOT NULL,
-    sale_status VARCHAR ( 30 ) NOT NULL,
+    sale_status VARCHAR ( 30 ),
     furniture_status VARCHAR ( 30 ) NOT NULL,
     bedroom_count NUMERIC(4) NOT NULL,
     bathroom_count NUMERIC(5, 1) NOT NULL,
