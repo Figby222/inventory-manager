@@ -45,12 +45,12 @@ const createHouseFormValidator = [
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
     body("amenity_ids[*]")
         .optional({ values: "falsy" }),
-    body("categories[*]")
+    body("category_ids[*]")
         .optional({ values: "falsy" }),
     body("amenity_ids")
         .toArray()
         .optional({ values: "falsy" }),
-    body("categories")
+    body("category_ids")
         .toArray()
         .optional({ values: "falsy" }),
         
@@ -98,12 +98,12 @@ const searchHouseFormValidator = [
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
     query("amenity_ids[*]")
         .optional({ values: "falsy" }),
-    query("categories[*]")
+    query("category_ids[*]")
         .optional({ values: "falsy" }),
     query("amenity_ids")
         .toArray()
         .optional({ values: "falsy" }),
-    query("categories")
+    query("category_ids")
         .toArray()
         .optional({ values: "falsy" }),
         
