@@ -259,10 +259,13 @@ const updateHousePost = [
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const houseDetails = await db.getHouseDetails(req.params.houseId);
+            const amenities = await db.getAmenities();
+
             res.status(400).render("updateHouse", { 
                 title: "Update House", 
                 errors: errors.errors,
-                house: houseDetails 
+                house: houseDetails,
+                amenities: amenities,
             });
             return;
         }
