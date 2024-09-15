@@ -265,7 +265,11 @@ const updateHousePost = [
             res.status(400).render("updateHouse", { 
                 title: "Update House", 
                 errors: errors.errors,
-                house: houseDetails,
+                house: {
+                    ...houseDetails.house,
+                    amenities: houseDetails.amenities,
+                    categories: houseDetails.categories,
+                },
                 amenities: amenities,
                 categories: categories,
             });
