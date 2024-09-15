@@ -108,7 +108,7 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
         throw new NotFoundError(`User with id ${req.params.userId} not found`);
     }
 
-    res.render("userUpdate", {
+    res.render("updateUser", {
         title: userDetails.username,
         username: userDetails.username,
         first_name: userDetails.first_name,
