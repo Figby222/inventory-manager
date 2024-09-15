@@ -225,6 +225,9 @@ async function getAmenities(amenity_ids) {
 }
 
 async function getCategories(category_ids) {
+    if (category_ids && category_ids.length === 0) {
+        return [];
+    }
     const { rows } = await Pool.query(format(`
         SELECT * FROM categories
         ${category_ids && category_ids.length > 0 ? "WHERE id IN (%1$L)" : ""}
