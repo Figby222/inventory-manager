@@ -149,11 +149,14 @@ const housesListSearchGet = [
 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
+            const houseList = await db.getHousesList();
             res.status(400).render("housesList", { 
                 title: "Houses", 
+                houses: houseList,
                 errors: errors.errors, 
                 categories: categories, 
-                amenities: amenities });
+                amenities: amenities 
+            });
             return;
         }
         
