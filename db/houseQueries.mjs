@@ -211,10 +211,11 @@ async function createHouse(query) {
     `, houseId, query.owner_id))
 }
 
-async function getAmenities() {
-    const { rows } = await Pool.query(`
+async function getAmenities(amenity_ids) {
+    const { rows } = await Pool.query(format(`
         SELECT * FROM amenities
-    `)
+        ${amenity_ids && amenity_ids.length > 0 ? "WHERE id IN (%1$L)" : ""}
+    `, amenity_ids))
 
     return rows;
 }
