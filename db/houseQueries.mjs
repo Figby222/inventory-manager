@@ -224,6 +224,19 @@ async function getAmenities(amenity_ids) {
     return rows;
 }
 
+async function getAmenitiesSearch(amenity_ids) {
+    if (amenity_ids.length === 0) {
+        return [];
+    }
+
+    const { rows } = await Pool.query(format(`
+        SELECT * FROM amenities
+        WHERE id IN (%1$L)
+    `, amenity_ids))
+
+    return rows;
+}
+
 async function getCategories(category_ids) {
     if (category_ids && category_ids.length === 0) {
         return [];
@@ -264,4 +277,4 @@ async function houseExists(houseId) {
     return !!rows[0];
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getCategories, deleteHouse, getHousesList, houseExists }
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getAmenitiesSearch, getCategories, deleteHouse, getHousesList, houseExists }
