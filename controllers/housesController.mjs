@@ -144,11 +144,12 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
 const housesListSearchGet = [
     searchHouseFormValidator,
     asyncHandler(async (req, res) => {
+        const amenities = await db.getAmenities();
         const categories = await db.getCategories();
 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("housesList", { title: "Houses", errors: errors, categories: categories });
+            res.status(400).render("housesList", { title: "Houses", errors: errors, categories: categories, amenities: amenities });
             return;
         }
         
@@ -166,9 +167,9 @@ const housesListSearchGet = [
         })
     
         if (houseList.length === 0) {
-            res.status(404).render("housesList", { title: "Houses not found", categories: categories });
+            res.status(404).render("housesList", { title: "Houses not found", categories: categories, amenities: amenities });
         }
-        res.render("housesList", { title: "Houses", categories: categories });
+        res.render("housesList", { title: "Houses", categories: categories, amenities: amenities });
     })
 ]
 
