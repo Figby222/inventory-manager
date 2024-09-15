@@ -12,7 +12,7 @@ async function getUserDetails(userId) {
 
 async function getUsersSearchList(query) {
     const { rows } = await Pool.query(format(`
-        SELECT username, first_name, last_name
+        SELECT id, username, first_name, last_name
         FROM users
         WHERE LOWER(username) LIKE LOWER(%1$L)
         ${!!query.first_name ? "AND LOWER(first_name) LIKE LOWER(%2$L)" : ""}
