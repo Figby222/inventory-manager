@@ -191,6 +191,7 @@ const createHousePost = [
             const houseAmenities = await db.getAmenities(req.body.amenity_ids);
             const houseCategories = await db.getCategories(req.body.category_ids);
             const amenities = await db.getAmenities();
+            const categories = await db.getCategories();
             res.status(400).render("createHouse", { 
                 title: "Create House", 
                 errors: errors.errors, 
@@ -199,7 +200,8 @@ const createHousePost = [
                     amenities: houseAmenities, 
                     categories: houseCategories 
                 }, 
-                amenities: amenities 
+                amenities: amenities,
+                categories: categories 
             });
             return;
         }
