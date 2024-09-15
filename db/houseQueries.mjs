@@ -212,6 +212,10 @@ async function createHouse(query) {
 }
 
 async function getAmenities(amenity_ids) {
+    if (amenity_ids && amenity_ids.length === 0) {
+        return [];
+    }
+    
     const { rows } = await Pool.query(format(`
         SELECT * FROM amenities
         ${amenity_ids && amenity_ids.length > 0 ? "WHERE id IN (%1$L)" : ""}
