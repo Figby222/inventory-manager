@@ -41,6 +41,7 @@ const userDetailsGet = asyncHandler(async (req, res)  => {
     }
 
     res.render("userDetails", {
+        title: userDetails.username,
         user: {
             title: userDetails.username,
             username: userDetails.username,
