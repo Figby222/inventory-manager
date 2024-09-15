@@ -6,9 +6,9 @@ async function getHouseDetails(houseId) {
         SELECT houses.id as id, title, price, house_number, street, city, state, country, zip_code,
         bedroom_count, bathroom_count, square_footage, furniture_status, sale_status, owner.username AS owner_name, listing_agent.username AS listing_agent_name
         FROM houses
-        JOIN owners_connection ON houses.id=owners_connection.house_id
-        JOIN users owner ON owners_connection.owner_id=owner.id
-        JOIN users listing_agent ON listing_agent_id=listing_agent.id
+        FULL OUTER JOIN owners_connection ON houses.id=owners_connection.house_id
+        FULL OUTER JOIN users owner ON owners_connection.owner_id=owner.id
+        FULL OUTER JOIN users listing_agent ON listing_agent_id=listing_agent.id
         WHERE houses.id = $1
     `, [houseId]))
         .rows[0];
@@ -24,7 +24,7 @@ async function getHouseDetails(houseId) {
     const amenities = (await Pool.query(`
         SELECT id, amenity_name
         FROM amenities
-        JOIN amenities_connection
+        FULL OUTER JOIN amenities_connection
         ON amenities.id = amenities_connection.amenity_id
         WHERE amenities_connection.house_id = $1
     `, [houseId]))
@@ -33,7 +33,7 @@ async function getHouseDetails(houseId) {
     const categories = (await Pool.query(`
         SELECT id, category_name
         FROM categories
-        JOIN categories_connection 
+        FULL OUTER JOIN categories_connection 
         ON categories.id=categories_connection.category_id
         WHERE categories_connection.house_id = $1
     `, [houseId]))
@@ -47,11 +47,11 @@ async function getHousesSearchList(query) {
         format(`
             SELECT DISTINCT houses.id, title, price, bedroom_count, bathroom_count, square_footage, house_number, street, city, state, country, zip_code
             FROM houses
-            LEFT JOIN amenities_connection
+            FULL OUTER JOIN amenities_connection
             ON houses.id=amenities_connection.house_id
-            LEFT JOIN amenities ON amenities_connection.amenity_id=amenities.id
-            LEFT JOIN categories_connection ON houses.id=categories_connection.house_id
-            LEFT JOIN categories ON categories_connection.category_id=categories.id
+            FULL OUTER JOIN amenities ON amenities_connection.amenity_id=amenities.id
+            FULL OUTER JOIN categories_connection ON houses.id=categories_connection.house_id
+            FULL OUTER JOIN categories ON categories_connection.category_id=categories.id
             WHERE LOWER(title) LIKE LOWER(%1$L)
             ${!!query.minimum_price ? "AND price >= %2$L" : ""}
             ${!!query.maximum_price ? "AND price <= %3$L" : ""}
