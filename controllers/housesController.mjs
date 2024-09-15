@@ -146,7 +146,7 @@ const housesListSearchGet = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("houseList", { errors: errors });
+            res.status(400).render("housesList", { errors: errors });
             return;
         }
         
@@ -164,9 +164,9 @@ const housesListSearchGet = [
         })
     
         if (houseList.length === 0) {
-            res.status(404).render("houseList");
+            res.status(404).render("housesList");
         }
-        res.render("houseList", { title: "Houses"});
+        res.render("housesList", { title: "Houses"});
     })
 ]
 
