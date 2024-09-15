@@ -213,6 +213,7 @@ const createHousePost = [
             bathroom_count: req.body.bathroom_count,
             square_footage: req.body.square_footage,
             house_number: req.body.house_number,
+            street: req.body.street,
             city: req.body.city,
             state: req.body.state,
             zip_code: req.body.zip_code,
