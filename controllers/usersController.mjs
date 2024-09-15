@@ -67,7 +67,8 @@ const usersListSearchGet = [
         });
     
         if (usersList.length === 0) {
-            res.status(404).send("error page");
+            const usersList = await db.getUsersList();
+            res.status(404).render("usersList");
         }
         res.render("usersList", { title: "Users", users: usersList });
     })
