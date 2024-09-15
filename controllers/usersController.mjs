@@ -74,7 +74,7 @@ const usersListSearchGet = [
 ]
 
 const createUserPageGet = asyncHandler(async (req, res) => {
-    res.render("createUser");
+    res.render("createUser", { title: "Create a User" });
 })
 
 const createUserPost = [
