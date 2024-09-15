@@ -86,7 +86,7 @@ const createUserPost = [
             return;
         }
 
-        await db.insertUser({
+        await db.createUser({
             username: req.body.username,
             first_name: req.body.first_name,
             last_name: req.body.last_name
