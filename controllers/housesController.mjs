@@ -217,6 +217,7 @@ const createHousePost = [
             state: req.body.state,
             zip_code: req.body.zip_code,
             country: req.body.country,
+            amenity_ids: req.body.amenity_ids,
         })
         
         res.redirect("/houses");
