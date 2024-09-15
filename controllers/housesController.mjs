@@ -190,7 +190,17 @@ const createHousePost = [
         if(!errors.isEmpty()) {
             const houseAmenities = await db.getAmenities(req.body.amenity_ids);
             const houseCategories = await db.getCategories(req.body.category_ids);
-            res.status(400).render("createHouse", { title: "Create House", errors: errors.errors, house: { ...req.body, amenities: houseAmenities, categories: houseCategories } });
+            const amenities = await db.getAmenities();
+            res.status(400).render("createHouse", { 
+                title: "Create House", 
+                errors: errors.errors, 
+                house: { 
+                    ...req.body, 
+                    amenities: houseAmenities, 
+                    categories: houseCategories 
+                }, 
+                amenities: amenities 
+            });
             return;
         }
 
