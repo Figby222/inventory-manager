@@ -2,7 +2,7 @@ import Pool from "./pool.mjs";
 import format from "pg-format";
 async function getUserDetails(userId) {
     const { rows } = await Pool.query(format(`
-        SELECT username, CONCAT(first_name, ' ', last_name) as name
+        SELECT *
         FROM users
         WHERE users.id = %1$L
     `, userId))
