@@ -149,7 +149,11 @@ const housesListSearchGet = [
 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("housesList", { title: "Houses", errors: errors, categories: categories, amenities: amenities });
+            res.status(400).render("housesList", { 
+                title: "Houses", 
+                errors: errors.errors, 
+                categories: categories, 
+                amenities: amenities });
             return;
         }
         
