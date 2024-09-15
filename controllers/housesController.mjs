@@ -162,7 +162,7 @@ const housesListSearchGet = [
             minimum_square_footage: req.query.minimum_square_footage,
             maximum_square_footage: req.query.maximum_square_footage,
             furniture_status: req.query.furniture_status,
-            amentity_ids: req.query.amenity_ids,
+            amenity_ids: req.query.amenity_ids,
             category_ids: req.query.category_ids
         })
     
