@@ -241,7 +241,7 @@ async function getCategories() {
 }
 
 async function getCategoriesSearch(category_ids) {
-    if (category_ids.length === 0) {
+    if (!category_ids || category_ids.length === 0) {
         return [];
     }
 
