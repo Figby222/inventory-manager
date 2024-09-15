@@ -244,6 +244,19 @@ async function getCategories(category_ids) {
     return rows;
 }
 
+async function getCategoriesSearch(category_ids) {
+    if (category_ids.length === 0) {
+        return [];
+    }
+
+    const { rows } = await Pool.query(format(`
+        SELECT * FROM categories
+        WHERE id IN (%1$L)
+    `, category_ids))
+
+    return rows;
+}
+
 getCategories([1, 2, 3, 4]).then(console.log);
 
 async function deleteHouse(houseId) {
@@ -272,4 +285,4 @@ async function houseExists(houseId) {
     return !!rows[0];
 }
 
-export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getAmenitiesSearch, getCategories, deleteHouse, getHousesList, houseExists }
+export default { getHouseDetails, getHousesSearchList, updateHouse, createHouse, getAmenities, getAmenitiesSearch, getCategories, getCategoriesSearch, deleteHouse, getHousesList, houseExists }
