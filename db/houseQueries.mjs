@@ -220,13 +220,16 @@ async function getAmenities(amenity_ids) {
     return rows;
 }
 
-async function getCategories() {
-    const { rows } = await Pool.query(`
+async function getCategories(category_ids) {
+    const { rows } = await Pool.query(format(`
         SELECT * FROM categories
-    `)
+        ${category_ids && category_ids.length > 0 ? "WHERE id IN (%1$L)" : ""}
+    `, category_ids))
 
     return rows;
 }
+
+getCategories([1, 2, 3, 4]).then(console.log);
 
 async function deleteHouse(houseId) {
     await Pool.query(format(`
