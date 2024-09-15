@@ -131,7 +131,7 @@ const updateUserPost = [
             const userDetails = await db.getUserDetails(req.params.userId);
             res.status(400).render("updateUser", { 
                 title: "Update User", 
-                errors: errors, 
+                errors: errors.errors, 
                 user: {
                     ...userDetails
                 } 
