@@ -17,7 +17,7 @@ const SQL = `CREATE TABLE IF NOT EXISTS houses (
     state VARCHAR ( 30 ) NOT NULL,
     zip_code NUMERIC ( 5 ) CONSTRAINT zip_code_digit_check CHECK (zip_code BETWEEN 0 AND 99999) NOT NULL,
     country VARCHAR ( 30 ) DEFAULT 'United States',
-    listing_agent_id INTEGER NOT NULL
+    listing_agent_id INTEGER
 );
 
 
