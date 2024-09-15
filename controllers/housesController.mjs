@@ -188,7 +188,9 @@ const createHousePost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            res.status(400).render("createHouse", { title: "Create House", errors: errors.errors });
+            const houseAmenities = await db.getAmenities(req.body.amenity_ids);
+            const houseCategories = await db.getCategories(req.body.category_ids);
+            res.status(400).render("createHouse", { title: "Create House", errors: errors.errors, house: { ...req.body, amenities: houseAmenities, categories: houseCategories } });
             return;
         }
 
