@@ -175,7 +175,12 @@ const createHousePageGet = asyncHandler(async (req, res) => {
     const categories = await db.getCategories();
     console.log(amenities);
 
-    res.render("createHouse", { title: "Create a house", amenities: amenities, categories: categories });
+    res.render("createHouse", { 
+        title: "Create a house", 
+        house: { amenities: [], categories: [] }, 
+        amenities: amenities, 
+        categories: categories 
+    });
 })
 
 const createHousePost = [
