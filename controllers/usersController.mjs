@@ -128,7 +128,13 @@ const updateUserPost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render("updateUser", { title: "Update User", errors: errors });
+            res.status(400).render("updateUser", { 
+                title: "Update User", 
+                errors: errors, 
+                user: {
+                    ...req.body
+                } 
+            });
             return;
         }
         
