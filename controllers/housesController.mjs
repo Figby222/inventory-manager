@@ -188,7 +188,7 @@ const createHousePost = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            res.status(400).render("createHouse", { errors: errors });
+            res.status(400).render("createHouse", { title: "Create House", errors: errors });
             return;
         }
 
