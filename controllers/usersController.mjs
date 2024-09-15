@@ -6,30 +6,30 @@ import NotFoundError from "./util/NotFoundError.mjs";
 const createUserFormValidator = [
     body("username")
         .notEmpty().withMessage("Username field must not be empty")
-        .isAlpha().withMessage("Username field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Username field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
     body("first_name")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("First Name field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("First Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
     body("last_name")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Last Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
 ]
 
 const searchUserFormValidator = [
     query("username")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Username field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Username field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Username field must contain a maximum of 30 characters"),
     query("first_name")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("First Name field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("First Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters"),
     query("last_name")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Last Name field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Last Name field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("First Name field must contain a maximum of 30 characters")
 ]
 

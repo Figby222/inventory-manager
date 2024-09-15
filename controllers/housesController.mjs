@@ -29,11 +29,11 @@ const createHouseFormValidator = [
         .isInt({ min: 0 }).withMessage("House Number field must be above 0"),
     body("street")
         .notEmpty().withMessage("Street field must not be empty")
-        .isAlpha().withMessage("Street field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Street field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
     body("city")
         .notEmpty().withMessage("City field must not be empty")
-        .isAlpha().withMessage("City field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("City field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
     body("zip_code")
         .notEmpty().withMessage("Zip/Postal Code field must not be empty")
@@ -41,7 +41,7 @@ const createHouseFormValidator = [
         .isInt({ min: 0, max: 99999 }).withMessage("Zip/Postal Code field must be between 00000 and 99999"),
     body("country")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Country field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
     body("amenities[*]")
         .optional({ values: "falsy" }),
@@ -82,11 +82,11 @@ const searchHouseFormValidator = [
         .isInt({ min: 0 }).withMessage("House Number field must be above 0"),
     query("street")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Street field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Street field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("Street field must contain a maximum of 30 characters"),
     query("city")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("City field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("City field must only contain alphabetical characters")
         .isLength({ max: 30 }).withMessage("City field must contain a maximum of 30 characters"),
     query("zip_code")
         .optional({ values: "falsy" })
@@ -94,7 +94,7 @@ const searchHouseFormValidator = [
         .isInt({ min: 0, max: 99999 }).withMessage("Zip/Postal Code field must be between 00000 and 99999"),
     query("country")
         .optional({ values: "falsy" })
-        .isAlpha().withMessage("Country field must only contain alphabetical characters")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Country field must only contain alphabetical characters")
         .isLength().withMessage("Country field must contain a maximum of 30 characters"),
     query("amenities[*]")
         .optional({ values: "falsy" }),
