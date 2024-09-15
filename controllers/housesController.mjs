@@ -169,7 +169,7 @@ const housesListSearchGet = [
         if (houseList.length === 0) {
             res.status(404).render("housesList", { title: "Houses not found", categories: categories, amenities: amenities });
         }
-        res.render("housesList", { title: "Houses", categories: categories, amenities: amenities });
+        res.render("housesList", { title: "Houses", houses: houseList, categories: categories, amenities: amenities });
     })
 ]
 
