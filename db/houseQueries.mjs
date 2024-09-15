@@ -220,7 +220,7 @@ async function getAmenities() {
 }
 
 async function getAmenitiesSearch(amenity_ids) {
-    if (amenity_ids.length === 0) {
+    if (!amenity_ids || amenity_ids.length === 0) {
         return [];
     }
 
