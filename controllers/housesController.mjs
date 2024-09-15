@@ -292,7 +292,9 @@ const updateHousePost = [
             city: req.body.city,
             state: req.body.state,
             zip_code: req.body.zip_code,
-            country: req.body.country
+            country: req.body.country,
+            amenity_ids: req.body.amenity_ids,
+            category_ids: req.body.category_ids
         })
         
         res.redirect("/houses");
