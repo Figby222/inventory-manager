@@ -115,6 +115,7 @@ const updateUserPageGet = asyncHandler(async (req, res) => {
         title: userDetails.username,
         user: {
             title: userDetails.username,
+            id: userDetails.id,
             username: userDetails.username,
             first_name: userDetails.first_name,
             last_name: userDetails.last_name
