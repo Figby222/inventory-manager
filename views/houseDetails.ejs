@@ -16,7 +16,7 @@
                 <% if (house.images) { %>
                     <ul class="house-images">
                         <% house.images.forEach((image) => { %>
-                            <li>
+                            <li class="house-image-list-item">
                                 <img class="house-image" src="<%= image.image_src %>" alt="Image of house">
                             </li>
                         <% }) %>
