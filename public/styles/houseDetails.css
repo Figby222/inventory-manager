@@ -2,6 +2,10 @@
     font-size: 24px;
 }
 
+body {
+    background-color: #eaeff2;
+}
+
 * {
     padding: 0;
     margin: 0;
