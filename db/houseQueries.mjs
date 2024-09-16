@@ -14,7 +14,7 @@ async function getHouseDetails(houseId) {
         .rows[0];
     
     const images = (await Pool.query(`
-        SELECT image_src as imageSrc, view_index as viewIndex
+        SELECT image_src as image_src, view_index as viewIndex
         FROM images
         WHERE house_id = $1
         ORDER BY viewIndex
