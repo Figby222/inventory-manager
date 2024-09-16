@@ -20,6 +20,7 @@
                                 <img class="house-image" href="<%= image_href %>" alt="Image of house">
                             </li>
                         <% }) %>
+
                     </ul>
                 <% } %>
                 <h2 class="house-address"><%= house.house_number %> <%= house.street %>, <%= house.city %>, <%= house.state %>, <%= house.country %>, <%= house.zip_code %></h2>
@@ -29,8 +30,10 @@
                         <% house.amenities.forEach((amenity) => { %>
                             <li class="house-amenity"><%= amenity.amenity_name %></li>
                         <% }) %>
+
                     </ul>
                 <% } %>
+                
                 <p class="bedroom-count"><%= house.bedroom_count %> bedrooms</p>
                 <p class="bathroom-count"><%= house.bathroom_count %> bathrooms</p>
                 <p class="square-footage"><%= house.square_footage %> Square Ft.</p>
