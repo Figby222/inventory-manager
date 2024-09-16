@@ -2,6 +2,7 @@
     font-size: 24px;
     --main-bg-color: white;
     --main-padding: 30px;
+    --house-amenities-bg-color: #d8d7d5;
 }
 
 body {
@@ -62,7 +63,7 @@ img {
     align-items: center;
     gap: 10px;
     padding: 15px;
-    background-color: #d8d7d5;
+    background-color: var(--house-amenities-bg-color);
 }
 
 .house-amenity {
@@ -77,4 +78,8 @@ img {
 
 .house-info {
     font-weight: bolder;
+}
+
+.house-info-container {
+    background-color: var(--house-amenities-bg-color);
 }
