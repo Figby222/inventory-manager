@@ -83,3 +83,7 @@ img {
 .house-info-container {
     background-color: var(--house-amenities-bg-color);
 }
+
+.house-info {
+    background-color: var(--main-bg-color);
+}
