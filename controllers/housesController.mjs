@@ -123,7 +123,12 @@ const houseDetailsGet = asyncHandler(async (req, res) => {
         house: {
             title: houseDetails.house.title,
             images: houseDetails.house.images,
-            address: houseDetails.house.address,
+            house_number: houseDetails.house.house_number,
+            street: houseDetails.house.street,
+            city: houseDetails.house.city,
+            state: houseDetails.house.state,
+            zip_code: houseDetails.house.zip_code,
+            country: houseDetails.house.country,
             amenities: houseDetails.house.amenities,
             bedroom_count: houseDetails.house.bedroom_count,
             bathroom_count: houseDetails.house.bathroom_count,
