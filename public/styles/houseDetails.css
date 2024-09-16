@@ -39,3 +39,7 @@ main {
     background-color: var(--main-bg-color);
     padding: 30px;
 }
+
+.main-heading {
+    text-align: center;
+}
