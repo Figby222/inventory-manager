@@ -1,6 +1,7 @@
 :root {
     font-size: 24px;
     --main-bg-color: white;
+    --main-padding: 30px;
 }
 
 body {
@@ -38,11 +39,16 @@ a {
 
 main {
     background-color: var(--main-bg-color);
-    padding: 30px;
+    padding: var(--main-padding);
 }
 
 .main-heading {
     text-align: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;  
 }
 
 .house-amenities {
