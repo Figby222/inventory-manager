@@ -15,9 +15,9 @@
             <section class="house-content">
                 <% if (house.images) { %>
                     <ul class="house-images">
-                        <% house.images.forEach((image_href) => { %>
+                        <% house.images.forEach((image) => { %>
                             <li>
-                                <img class="house-image" href="<%= image_href %>" alt="Image of house">
+                                <img class="house-image" href="<%= image.image_href %>" alt="Image of house">
                             </li>
                         <% }) %>
 
