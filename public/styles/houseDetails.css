@@ -37,4 +37,5 @@ a {
 
 main {
     background-color: var(--main-bg-color);
+    padding: 30px;
 }
