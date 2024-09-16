@@ -26,4 +26,5 @@ ul {
 .navbar-link {
     text-decoration: none;
     background-color: white;
+    padding: 15px 30px;
 }
