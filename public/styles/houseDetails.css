@@ -18,3 +18,7 @@ ul {
     justify-content: center;
     justify-items: center;
 }
+
+.navbar-link {
+    text-decoration: none;
+}
