@@ -4,6 +4,7 @@
     --main-padding: 30px;
     --house-amenities-bg-color: #d8d7d5;
     --house-amenities-gap: 10px;
+    --house-amenities-padding: 15px;
 }
 
 body {
@@ -82,6 +83,7 @@ img {
 }
 
 .house-info-container {
+    padding: var(--house-amenities-padding);
     background-color: var(--house-amenities-bg-color);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
