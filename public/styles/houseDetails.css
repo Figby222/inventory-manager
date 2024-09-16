@@ -1,5 +1,6 @@
 :root {
     font-size: 24px;
+    --main-bg-color: white;
 }
 
 body {
@@ -30,6 +31,10 @@ a {
 
 .navbar-link {
     text-decoration: none;
-    background-color: white;
+    background-color: var(--main-bg-color);
     padding: 15px 30px;
+}
+
+main {
+    background-color: var(--main-bg-color);
 }
