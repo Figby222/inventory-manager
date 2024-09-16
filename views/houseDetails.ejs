@@ -34,14 +34,14 @@
                     </ul>
                 <% } %>
                 
-                <p class="bedroom-count"><%= house.bedroom_count %> bedrooms</p>
-                <p class="bathroom-count"><%= house.bathroom_count %> bathrooms</p>
-                <p class="square-footage"><%= house.square_footage %> Square Ft.</p>
-                <p class="furniture-status"><%= house.furniture_status %></p>
-                <p class="sale-status"><%= house.sale_status %></p>
+                <p class="house-info bedroom-count"><%= house.bedroom_count %> bedrooms</p>
+                <p class="house-info bathroom-count"><%= house.bathroom_count %> bathrooms</p>
+                <p class="house-info square-footage"><%= house.square_footage %> Square Ft.</p>
+                <p class="house-info furniture-status"><%= house.furniture_status %></p>
+                <p class="house-info sale-status"><%= house.sale_status %></p>
             </section>
             <section class="price-information">
-                <p class="price">$<%= house.price %></p>
+                <p class="house-info price">$<%= house.price %></p>
             </section>
             <section class="listing-details">
                 <p class="owner-name">Owner: <%= house.owner_name %></p>
