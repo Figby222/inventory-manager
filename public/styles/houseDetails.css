@@ -86,6 +86,7 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: center;
+    align-content: center;
     gap: var(--house-amenities-gap);
 }
 
