@@ -51,6 +51,10 @@ img {
     height: 100%;  
 }
 
+.house-image-list-item {
+    margin: 0 calc(var(--main-padding) * -1);
+}
+
 .house-amenities {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
