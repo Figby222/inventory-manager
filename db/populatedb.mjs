@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS owners_connection (
     
 CREATE TABLE IF NOT EXISTS images (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    image_href TEXT NOT NULL,
+    image_src TEXT NOT NULL,
     view_index NUMERIC ( 3 ) CONSTRAINT positive_view_index CHECK (view_index >= 0) NOT NULL,
     house_id INTEGER REFERENCES houses (id) ON DELETE CASCADE NOT NULL,
     UNIQUE (house_id, view_index)
