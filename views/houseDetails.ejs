@@ -21,7 +21,7 @@
                         <% }) %>
                     </ul>
                 <% } %>
-                <h2 class="house-address"><%= house.address %></h2>
+                <h2 class="house-address"><%= house.house_number %> <%= house.street %>, <%= house.city %>, <%= house.state %>, <%= house.country %>, <%= house.zip_code %></h2>
                 <% if (house.amenities) { %>
                     <h2 class="house-amenities-heading">Amenities: </h2>
                     <ul class="house-amenities">
