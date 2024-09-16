@@ -16,6 +16,10 @@ ul {
     list-style: none;
 }
 
+a {
+    display: inline-block;
+}
+
 .navbar-ul {
     display: grid;
     grid-template-columns: repeat(3, 150px);
