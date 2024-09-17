@@ -121,12 +121,12 @@
                                         <% }) %>
                                     </ul>
                                 <% } %>
-                                <li class="house-info">
+                                <section class="house-info">
                                     <h2 class="address"><%= house.house_number %> <%= house.street %>, <%= house.city %>, <%= house.state %>, <%= house.country %>, <%= house.zip_code %></h2>
                                     <p class="bedroom_count"><%= house.bedroom_count %> bedrooms</p>
                                     <p class="bathroom_count"><%= house.bathroom_count %> bathrooms</p>
                                     <p class="square-footage"><%= house.square_footage %> Square Feet</p>
-                                </li>
+                                </section>
                                 <a href="/houses/<%= house.id %>">More Info</a>
                             </li>
                         <% }) %>
