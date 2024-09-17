@@ -60,3 +60,13 @@ h1, h2, h3, h4 {
     padding: 15px;
     background-color: var(--house-amenities-bg-color);
 }
+
+.amenity {
+    background-color: var(--main-bg-color);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-radius: 10%;
+}
