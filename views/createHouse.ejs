@@ -90,15 +90,17 @@
                 <ul class="categories-list">
                     <% categories.forEach((category) => { %>
                         <li class="category">
-                            <input type="checkbox" 
-                                name="category_ids" 
-                                id="<%= category.category_name %>" 
-                                value="<%= category.id %>"
-                                <% if (house.categories.find((current) => current.id === category.id)) { %>
-                                    checked
-                                <% } %>
-                            />
-                            <label for="<%= category.category_name %>"><%= category.category_name %></label>
+                            <label for="<%= category.category_name %>">
+                                <input type="checkbox" 
+                                    name="category_ids" 
+                                    id="<%= category.category_name %>" 
+                                    value="<%= category.id %>"
+                                    <% if (house.categories.find((current) => current.id === category.id)) { %>
+                                        checked
+                                    <% } %>
+                                />
+                                <%= category.category_name %>
+                            </label>
                         </li>
                     <% }) %>
                 </ul>
