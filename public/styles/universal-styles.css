@@ -116,3 +116,7 @@ fieldset {
     grid-template-rows: repeat(auto, auto);
     gap: 5px;
 }
+
+.field-container {
+    display: flex;
+}
