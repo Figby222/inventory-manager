@@ -14,9 +14,9 @@
         <aside>
             <form class="houses-search" action="/houses/search" method="GET">
                 <%- include("errors") %>
-                <h2 class="filter-search">Filter Search</h2>
+                <h1 class="filter-search">Filter Search</h1>
                 <fieldset class="main-info">
-                    <h3 class="main-info-heading">Main Info</h3>
+                    <h2 class="main-info-heading">Main Info</h2>
                     <div class="field-container">
                         <label for="title">Title: </label>
                         <input type="text" name="title" id="title" />
@@ -83,7 +83,7 @@
                     </div>
                 </fieldset>
                 <fieldset class="details">
-                    <h3 class="details-heading">Details</h3>
+                    <h2 class="details-heading">Details</h2>
                     <div class="field-container">
                         <label for="furniture-status">Furniture Status: </label>
                         <select name="furniture_status" id="furniture-status">
@@ -95,7 +95,7 @@
                     </div>
                 </fieldset>
                 <fieldset>
-                    <h3 class="amenities-header">Amenities</h3>
+                    <h2 class="amenities-header">Amenities</h2>
                     <ul class="amenities-list">
                         <% amenities.forEach((amenity) => { %>
                             <li class="amenity-list-item">
@@ -108,7 +108,7 @@
                     </ul>
                 </fieldset>
                 <fieldset>
-                    <h3 class="categories-header">Categories</h3>
+                    <h2 class="categories-header">Categories</h2>
                     <ul class="categories-list">
                         <% categories.forEach((category) => { %>
                             <li class="category-list-item">
