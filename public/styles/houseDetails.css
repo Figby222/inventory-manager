@@ -10,6 +10,9 @@
 body {
     background-color: #eaeff2;
     padding: 15px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
 }
 
 * {
