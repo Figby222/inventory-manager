@@ -79,7 +79,7 @@ h1, h2, h3, h4 {
     border-radius: 10%;
 }
 
-input {
+input, select {
     font-size: 0.64rem;
 }
 
@@ -121,7 +121,7 @@ fieldset {
     display: flex;
 }
 
-input {
+input, select {
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 10px;
