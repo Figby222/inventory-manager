@@ -8,4 +8,10 @@ body {
 
 .house {
     background-color: var(--main-bg-color);
+    padding: var(--main-padding);
+}
+
+main {
+    background-color: unset;
+    padding: unset;
 }
