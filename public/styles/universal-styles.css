@@ -120,3 +120,9 @@ fieldset {
 .field-container {
     display: flex;
 }
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 10px;
+}
