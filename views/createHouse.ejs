@@ -70,15 +70,17 @@
                 <ul class="amenities-list">
                     <% amenities.forEach((amenity) => { %>
                         <li class="amenity">
-                            <input type="checkbox" 
-                                name="amenity_ids" 
-                                id="<%= amenity.amenity_name %>" 
-                                value="<%= amenity.id %>"
-                                <% if (house.amenities.find((current) => current.id === amenity.id)) { %>
-                                    checked
-                                <% } %>
-                            />
-                            <label for="<%= amenity.amenity_name %>"><%= amenity.amenity_name %></label>
+                            <label for="<%= amenity.amenity_name %>">
+                                <input type="checkbox" 
+                                    name="amenity_ids" 
+                                    id="<%= amenity.amenity_name %>" 
+                                    value="<%= amenity.id %>"
+                                    <% if (house.amenities.find((current) => current.id === amenity.id)) { %>
+                                        checked
+                                    <% } %>
+                                />
+                                <%= amenity.amenity_name %>
+                            </label>
                         </li>
                     <% }) %>
                 </ul>
