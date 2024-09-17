@@ -1,3 +1,11 @@
+body {
+    background-color: #eaeff2;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 30px;
+}
+
 .house {
     background-color: var(--main-bg-color);
 }
