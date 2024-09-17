@@ -1,0 +1,48 @@
+:root {
+    font-size: 24px;
+    --main-bg-color: white;
+    --main-padding: 30px;
+    --house-amenities-bg-color: #d8d7d5;
+    --house-amenities-gap: 10px;
+    --house-amenities-padding: 15px;
+}
+
+body {
+    background-color: #eaeff2;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    display: inline-block;
+}
+
+.navbar-ul {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.navbar-link {
+    text-decoration: none;
+    background-color: var(--main-bg-color);
+    padding: 15px 30px;
+}
+
+h1, h2, h3, h4 {
+    padding: 10px 0px;
+}
+
+.main-heading {
+    text-align: center;
+}
