@@ -17,12 +17,18 @@
                 <%- include("errors") %>
                 <fieldset class="user-info">
                     <h3 class="user-info-heading">User Info</h3>
-                    <label for="username">Username: <span class="required-symbol">*</span></label>
-                    <input type="text" name="username" id="username" value="<%= locals.user.username %>" required />
-                    <label for="first-name">First Name: </label>
-                    <input type="text" name="first_name" id="first-name" value="<%= locals.user.first_name %>" />
-                    <label for="last-name">Last Name: </label>
-                    <input type="text" name="last_name" id="last-name" value="<%= locals.user.last_name %>" />
+                    <div class="field-container">
+                        <label for="username">Username: <span class="required-symbol">*</span></label>
+                        <input type="text" name="username" id="username" value="<%= locals.user.username %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="first-name">First Name: </label>
+                        <input type="text" name="first_name" id="first-name" value="<%= locals.user.first_name %>" />
+                    </div>
+                    <div class="field-container">
+                        <label for="last-name">Last Name: </label>
+                        <input type="text" name="last_name" id="last-name" value="<%= locals.user.last_name %>" />
+                    </div>
                 </fieldset>
                 <button type="submit">Submit</button>
             </form>
