@@ -6,3 +6,8 @@ main {
 fieldset {
     border: none;
 }
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+}
