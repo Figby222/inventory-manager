@@ -109,22 +109,24 @@
                 <section class="houses">
                     <ul aria-label="houses">
                         <% houses.forEach((house) => { %>
-                            <% if (house.images && house.images.length > 1) { %>
-                                <ul class="images" aria-label="images">
-                                    <% house.images.forEach((image_href, index) => { %>
-                                        <li>
-                                            <img class="house-image" href="<%= image_href %>" alt="Image of house" />
-                                        </li>
-                                    <% }) %>
-                                </ul>
-                            <% } %>
-                            <li class="house-info">
-                                <h2 class="address"><%= house.house_number %> <%= house.street %>, <%= house.city %>, <%= house.state %>, <%= house.country %>, <%= house.zip_code %></h2>
-                                <p class="bedroom_count"><%= house.bedroom_count %> bedrooms</p>
-                                <p class="bathroom_count"><%= house.bathroom_count %> bathrooms</p>
-                                <p class="square-footage"><%= house.square_footage %> Square Feet</p>
+                            <li class="house">
+                                <% if (house.images && house.images.length > 1) { %>
+                                    <ul class="images" aria-label="images">
+                                        <% house.images.forEach((image_href, index) => { %>
+                                            <li>
+                                                <img class="house-image" href="<%= image_href %>" alt="Image of house" />
+                                            </li>
+                                        <% }) %>
+                                    </ul>
+                                <% } %>
+                                <li class="house-info">
+                                    <h2 class="address"><%= house.house_number %> <%= house.street %>, <%= house.city %>, <%= house.state %>, <%= house.country %>, <%= house.zip_code %></h2>
+                                    <p class="bedroom_count"><%= house.bedroom_count %> bedrooms</p>
+                                    <p class="bathroom_count"><%= house.bathroom_count %> bathrooms</p>
+                                    <p class="square-footage"><%= house.square_footage %> Square Feet</p>
+                                </li>
+                                <a href="/houses/<%= house.id %>">More Info</a>
                             </li>
-                            <a href="/houses/<%= house.id %>">More Info</a>
                         <% }) %>
                     </ul>
                 </section>
