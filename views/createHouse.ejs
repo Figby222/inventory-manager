@@ -17,31 +17,53 @@
             <h1 class="main-heading"><%= title %></h1>
             <fieldset class="main-info">
                 <h3 class="house-information-heading">House Information</h3>
-                <label for="title">Title: <span class="required-symbol">*</span></label>
-                <input type="text" name="title" id="title" value="<%= house.title %>" required />
-                <label for="price">Price: <span class="required-symbol">*</span></label>
-                <input type="number" name="price" id="price" step="1" value="<%= house.price %>" />
-                <label for="bedroom-count">Bedrooms: <span class="required-symbol">*</span></label>
-                <input type="number" name="bedroom_count" id="bedroom-count" value="<%= house.bedroom_count %>" required />
-                <label for="bathroom-count">Bathrooms: <span class="required-symbol">*</span></label>
-                <input type="number" name="bathroom_count" id="bathroom-count" value="<%= house.bathroom_count %>" required />
-                <label for="square-footage">Square Footage: <span class="required-symbol">*</span></label>
-                <input type="number" name="square_footage" id="square-footage" value="<%= house.square_footage %>" required />
+                <div class="field-container">
+                    <label for="title">Title: <span class="required-symbol">*</span></label>
+                    <input type="text" name="title" id="title" value="<%= house.title %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="price">Price: <span class="required-symbol">*</span></label>
+                    <input type="number" name="price" id="price" step="1" value="<%= house.price %>" />
+                </div>
+                <div class="field-container">
+                    <label for="bedroom-count">Bedrooms: <span class="required-symbol">*</span></label>
+                    <input type="number" name="bedroom_count" id="bedroom-count" value="<%= house.bedroom_count %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="bathroom-count">Bathrooms: <span class="required-symbol">*</span></label>
+                    <input type="number" name="bathroom_count" id="bathroom-count" value="<%= house.bathroom_count %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="square-footage">Square Footage: <span class="required-symbol">*</span></label>
+                    <input type="number" name="square_footage" id="square-footage" value="<%= house.square_footage %>" required />
+                </div>
             </fieldset>
             <fieldset class="address">
                 <h3 class="address-heading">Address</h3>
-                <label for="house-number">House Number: <span class="required-symbol">*</span></label>
-                <input type="number" name="house_number" id="house-number" value="<%= house.house_number %>" required />
-                <label for="street-name">Street: <span class="required-symbol">*</span></label>
-                <input type="text" name="street" id="street-name" value="<%= house.street %>" required />
-                <label for="city-name">City: <span class="required-symbol">*</span></label>
-                <input type="text" name="city" id="city-name" value="<%= house.city %>" required />
-                <label for="state-name">State: <span class="required-symbol">*</span></label>
-                <input type="text" name="state" id="state-name" value="<%= house.state %>" required />
-                <label for="zip-code">Zip/Postal Code: <span class="required-symbol">*</span></label>
-                <input type="number" name="zip_code" id="zip-code" min="0" max="99999" value="<%= house.zip_code %>" required />
-                <label for="country-name">Country: </label>
-                <input type="text" name="country" id="country-name" value="<%= house.country %>" required />
+                <div class="field-container">
+                    <label for="house-number">House Number: <span class="required-symbol">*</span></label>
+                    <input type="number" name="house_number" id="house-number" value="<%= house.house_number %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="street-name">Street: <span class="required-symbol">*</span></label>
+                    <input type="text" name="street" id="street-name" value="<%= house.street %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="city-name">City: <span class="required-symbol">*</span></label>
+                    <input type="text" name="city" id="city-name" value="<%= house.city %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="state-name">State: <span class="required-symbol">*</span></label>
+                    <input type="text" name="state" id="state-name" value="<%= house.state %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="zip-code">Zip/Postal Code: <span class="required-symbol">*</span></label>
+                    <input type="number" name="zip_code" id="zip-code" min="0" max="99999" value="<%= house.zip_code %>" required />
+                </div>
+                <div class="field-container">
+                    <label for="country-name">Country: </label>
+                    <input type="text" name="country" id="country-name" value="<%= house.country %>" required />
+                </div>
             </fieldset>
             <fieldset class="amenities">
                 <h3 class="amenities-heading">Amenities</h3>
