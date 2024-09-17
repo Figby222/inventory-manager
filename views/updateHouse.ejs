@@ -11,96 +11,98 @@
         <header>
             <%- include("navbar") %>
         </header>
-        <form action="/houses/update/<%= house.id %>" method="POST">
-            <%- include("errors") %>
-            <h1 class="main-heading"><%= title %></h1>
-            <fieldset class="main-info">
-                <h3 class="house-information-heading">House Information</h3>
-                <div class="field-container">
-                    <label for="title">Title: <span class="required-symbol">*</span></label>
-                    <input type="text" name="title" id="title" value="<%= house.title %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="price">Price: <span class="required-symbol">*</span></label>
-                    <input type="number" name="price" id="price" step="1" value="<%= house.price %>" />
-                </div>
-                <div class="field-container">
-                    <label for="bedroom-count">Bedrooms: <span class="required-symbol">*</span></label>
-                    <input type="number" name="bedroom_count" id="bedroom-count" value="<%= house.bedroom_count %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="bathroom-count">Bathrooms: <span class="required-symbol">*</span></label>
-                    <input type="number" name="bathroom_count" id="bathroom-count" value="<%= house.bathroom_count %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="square-footage">Square Footage: <span class="required-symbol">*</span></label>
-                    <input type="number" name="square_footage" id="square-footage" value="<%= house.square_footage %>" required />
-                </div>
-            </fieldset>
-            <fieldset class="address">
-                <h3 class="address-heading">Address</h3>
-                <div class="field-container">
-                    <label for="house-number">House Number: <span class="required-symbol">*</span></label>
-                    <input type="number" name="house_number" id="house-number" value="<%= house.house_number %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="street-name">Street: <span class="required-symbol">*</span></label>
-                    <input type="text" name="street" id="street-name" value="<%= house.street %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="city-name">City: <span class="required-symbol">*</span></label>
-                    <input type="text" name="city" id="city-name" value="<%= house.city %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="state-name">State: <span class="required-symbol">*</span></label>
-                    <input type="text" name="state" id="state-name" value="<%= house.state %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="zip-code">Zip/Postal Code: <span class="required-symbol">*</span></label>
-                    <input type="number" name="zip_code" id="zip-code" min="0" max="99999" value="<%= house.zip_code %>" required />
-                </div>
-                <div class="field-container">
-                    <label for="country-name">Country: </label>
-                    <input type="text" name="country" id="country-name" value="<%= house.country %>" required />
-                </div>
-            </fieldset>
-            <fieldset class="amenities">
-                <h3 class="amenities-heading">Amenities</h3>
-                <ul class="amenities-list">
-                    <% amenities.forEach((amenity) => { %>
-                        <li class="amenity">
-                            <input type="checkbox" 
-                                name="amenity_ids" 
-                                id="<%= amenity.amenity_name %>" 
-                                value="<%= amenity.id %>"
-                                <% if (house.amenities.find((current) => current.id === amenity.id)) { %>
-                                    checked
-                                <% } %>
-                            />
-                            <label for="<%= amenity.amenity_name %>"><%= amenity.amenity_name %></label>
-                        </li>
-                    <% }) %>
-                </ul>
-            </fieldset>
-            <fieldset class="categories">
-                <h3 class="categories-heading">Categories</h3>
-                <ul class="categories-list">
-                    <% categories.forEach((category) => { %>
-                        <li class="category">
-                            <input type="checkbox" 
-                                name="category_ids" 
-                                id="<%= category.category_name %>" 
-                                value="<%= category.id %>"
-                                <% if (house.categories.find((current) => current.id === category.id)) { %>
-                                    checked
-                                <% } %>
-                            />
-                            <label for="<%= category.category_name %>"><%= category.category_name %></label>
-                        </li>
-                    <% }) %>
-                </ul>
-            </fieldset>
-            <button type="submit">Submit</button>
-        </form>
+        <main>
+            <form action="/houses/update/<%= house.id %>" method="POST">
+                <%- include("errors") %>
+                <h1 class="main-heading"><%= title %></h1>
+                <fieldset class="main-info">
+                    <h3 class="house-information-heading">House Information</h3>
+                    <div class="field-container">
+                        <label for="title">Title: <span class="required-symbol">*</span></label>
+                        <input type="text" name="title" id="title" value="<%= house.title %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="price">Price: <span class="required-symbol">*</span></label>
+                        <input type="number" name="price" id="price" step="1" value="<%= house.price %>" />
+                    </div>
+                    <div class="field-container">
+                        <label for="bedroom-count">Bedrooms: <span class="required-symbol">*</span></label>
+                        <input type="number" name="bedroom_count" id="bedroom-count" value="<%= house.bedroom_count %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="bathroom-count">Bathrooms: <span class="required-symbol">*</span></label>
+                        <input type="number" name="bathroom_count" id="bathroom-count" value="<%= house.bathroom_count %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="square-footage">Square Footage: <span class="required-symbol">*</span></label>
+                        <input type="number" name="square_footage" id="square-footage" value="<%= house.square_footage %>" required />
+                    </div>
+                </fieldset>
+                <fieldset class="address">
+                    <h3 class="address-heading">Address</h3>
+                    <div class="field-container">
+                        <label for="house-number">House Number: <span class="required-symbol">*</span></label>
+                        <input type="number" name="house_number" id="house-number" value="<%= house.house_number %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="street-name">Street: <span class="required-symbol">*</span></label>
+                        <input type="text" name="street" id="street-name" value="<%= house.street %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="city-name">City: <span class="required-symbol">*</span></label>
+                        <input type="text" name="city" id="city-name" value="<%= house.city %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="state-name">State: <span class="required-symbol">*</span></label>
+                        <input type="text" name="state" id="state-name" value="<%= house.state %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="zip-code">Zip/Postal Code: <span class="required-symbol">*</span></label>
+                        <input type="number" name="zip_code" id="zip-code" min="0" max="99999" value="<%= house.zip_code %>" required />
+                    </div>
+                    <div class="field-container">
+                        <label for="country-name">Country: </label>
+                        <input type="text" name="country" id="country-name" value="<%= house.country %>" required />
+                    </div>
+                </fieldset>
+                <fieldset class="amenities">
+                    <h3 class="amenities-heading">Amenities</h3>
+                    <ul class="amenities-list">
+                        <% amenities.forEach((amenity) => { %>
+                            <li class="amenity">
+                                <input type="checkbox" 
+                                    name="amenity_ids" 
+                                    id="<%= amenity.amenity_name %>" 
+                                    value="<%= amenity.id %>"
+                                    <% if (house.amenities.find((current) => current.id === amenity.id)) { %>
+                                        checked
+                                    <% } %>
+                                />
+                                <label for="<%= amenity.amenity_name %>"><%= amenity.amenity_name %></label>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </fieldset>
+                <fieldset class="categories">
+                    <h3 class="categories-heading">Categories</h3>
+                    <ul class="categories-list">
+                        <% categories.forEach((category) => { %>
+                            <li class="category">
+                                <input type="checkbox" 
+                                    name="category_ids" 
+                                    id="<%= category.category_name %>" 
+                                    value="<%= category.id %>"
+                                    <% if (house.categories.find((current) => current.id === category.id)) { %>
+                                        checked
+                                    <% } %>
+                                />
+                                <label for="<%= category.category_name %>"><%= category.category_name %></label>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
     </body>
 </html>
