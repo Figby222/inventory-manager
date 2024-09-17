@@ -132,9 +132,9 @@
                             <li class="house">
                                 <% if (house.images && house.images.length > 1) { %>
                                     <ul class="images" aria-label="images">
-                                        <% house.images.forEach((image_href, index) => { %>
+                                        <% house.images.forEach((image) => { %>
                                             <li>
-                                                <img class="house-image" href="<%= image_href %>" alt="Image of house" />
+                                                <img class="house-image" href="<%= image.image_href %>" alt="Image of house" />
                                             </li>
                                         <% }) %>
                                     </ul>
