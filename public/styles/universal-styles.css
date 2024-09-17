@@ -51,7 +51,7 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
-.amenities-list {
+.amenities-list, .categories-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: center;
