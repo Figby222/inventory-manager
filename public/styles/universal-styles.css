@@ -104,3 +104,8 @@ button[type="submit"] {
     border-radius: 5px;
     font-size: 0.9rem;
 }
+
+main {
+    background-color: var(--main-bg-color);
+    padding: var(--main-padding);
+}
