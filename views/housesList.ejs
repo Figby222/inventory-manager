@@ -11,8 +11,7 @@
         <header>
             <%- include("navbar") %>
         </header>
-        <main>
-            <h1 class="main-heading"><%= title %></h1>
+        <aside>
             <form class="houses-search" action="/houses/search" method="GET">
                 <%- include("errors") %>
                 <h2 class="filter-search">Filter Search</h2>
@@ -123,6 +122,9 @@
                 </fieldset>
                 <button type="submit">Search</button>
             </form>
+        </aside>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
             <% if (locals.houses) { %>
                 <section class="houses">
                     <ul aria-label="houses">
