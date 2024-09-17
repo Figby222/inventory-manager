@@ -81,7 +81,7 @@
                     <h3 class="amenities-header">Amenities</h3>
                     <ul class="amenities-list">
                         <% amenities.forEach((amenity) => { %>
-                            <li>
+                            <li class="amenity-list-item">
                                 <label for="<%= amenity.amenity_name %>" class="amenity">
                                     <input type="checkbox" name="amenity_ids" id="<%= amenity.amenity_name %>" value="<%= amenity.id %>" />
                                     <%= amenity.amenity_name %>
