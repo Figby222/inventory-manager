@@ -6,6 +6,13 @@ body {
     gap: 30px;
 }
 
+
+.houses-list {
+    display: grid;
+    grid-template-rows: repeat(auto, auto);
+    gap: 15px;
+}
+
 .house {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
