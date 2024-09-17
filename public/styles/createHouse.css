@@ -2,3 +2,7 @@ main {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
 }
+
+fieldset {
+    border: none;
+}
