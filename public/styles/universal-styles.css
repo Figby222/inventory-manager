@@ -50,3 +50,11 @@ h1, h2, h3, h4 {
 .main-heading {
     text-align: center;
 }
+
+.amenities-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: var(--house-amenities-gap);
+}
