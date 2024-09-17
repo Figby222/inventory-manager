@@ -46,6 +46,9 @@ a {
 main {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
+    display: grid;
+    grid-template-rows: repeat(auto, auto);
+    gap: 15px;
 }
 
 .main-heading {
