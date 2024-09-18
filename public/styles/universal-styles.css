@@ -128,6 +128,10 @@ input, select {
     margin-left: 10px;
 }
 
+.create, .more-info, .update {
+    display: block;
+}
+
 @media ( max-width: 600px ) {
     :root {
         font-size: 16px;
