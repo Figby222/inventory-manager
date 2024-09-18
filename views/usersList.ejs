@@ -16,12 +16,18 @@
             <form class="users-search" action="/users/search" method="GET">
                 <%- include("errors") %>
                 <h2 class="users-search-heading">Users Search</h2>
-                <label for="username-search">Username: </label>
-                <input type="text" name="username" id="username-search" />
-                <label for="first-name-search">First Name: </label>
-                <input type="text" name="first_name" id="first-name-search" />
-                <label for="last-name-search">Last Name: </label>
-                <input type="text" name="last_name" id="last-name-search" />
+                <div class="field-container">
+                    <label for="username-search">Username: </label>
+                    <input type="text" name="username" id="username-search" />
+                </div>
+                <div class="field-container">
+                    <label for="first-name-search">First Name: </label>
+                    <input type="text" name="first_name" id="first-name-search" />
+                </div>
+                <div class="field-container">
+                    <label for="last-name-search">Last Name: </label>
+                    <input type="text" name="last_name" id="last-name-search" />
+                </div>
                 <button type="submit">Search</button>
             </form>
             <% if (locals.users) { %>
