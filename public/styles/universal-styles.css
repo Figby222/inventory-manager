@@ -97,7 +97,7 @@ form > * {
     grid-column: 1 / -1;
 }
 
-button[type="submit"], .update {
+button[type="submit"], .create, .update {
     grid-column: 1 / 1;
     background-color: rgb(0, 140, 255);
     padding: 10px 24px;
@@ -136,7 +136,7 @@ input, select {
 }
 
 .create {
-    background-color: var(--main-bg-color);
+    background-color: rgb(9, 245, 40);
     padding: var(--button-padding);
 }
 
