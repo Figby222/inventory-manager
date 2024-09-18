@@ -147,6 +147,7 @@ input, select {
 
 button.delete {
     background-color: rgb(253, 127, 127);
+    padding: var(--button-padding);
 }
 
 @media ( max-width: 600px ) {
