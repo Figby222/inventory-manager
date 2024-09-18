@@ -150,5 +150,6 @@ input, select {
 @media ( min-width: 1000px ) {
     body {
         padding: 15px 146px;
+        gap: 50px;
     }
 }
