@@ -147,7 +147,7 @@
                                     <p class="square-footage"><%= house.square_footage %> Square Feet</p>
                                 </section>
                                 <a href="/houses/<%= house.id %>">More Info</a>
-                                <a href="/houses/update/<%= house.id %>" class="update-house">Update House</a>
+                                <a href="/houses/update/<%= house.id %>" class="update">Update House</a>
                                 <form class="delete-house-form" action="/houses/delete/<%= house.id %>" method="POST"></form>
                                     <button type="submit" class="delete-house">Delete House</button>
                                 </form>
