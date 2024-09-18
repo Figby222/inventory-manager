@@ -39,7 +39,7 @@
                         <% users.forEach((user) => { %>
                             <li class="user">
                                 <h2 class="user-username"><%= user.username %></h2>
-                                <a href="/users/<%= user.id %>">More info</a>
+                                <a href="/users/<%= user.id %>" class="more-info">More info</a>
                                 <a href="/users/update/<%= user.id %>" class="update">Update User</a>
                                 <form class="delete-user-form" action="/users/delete/<%= user.id %>" method="POST">
                                     <button type="submit" class="delete">Delete User</button>
