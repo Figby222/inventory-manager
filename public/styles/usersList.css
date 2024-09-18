@@ -16,3 +16,8 @@ main {
     background-color: unset;
     padding: unset;
 }
+
+.user {
+    background-color: var(--main-bg-color);
+    padding: var(--main-padding);
+}
