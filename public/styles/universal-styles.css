@@ -142,6 +142,7 @@ input, select {
 
 .update {
     background-color: var(--button-bg-color);
+    padding: var(--button-padding);
 }
 
 @media ( max-width: 600px ) {
