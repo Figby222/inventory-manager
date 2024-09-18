@@ -162,7 +162,7 @@ const updateUserPost = [
 ]
 
 const deleteUserPost = asyncHandler(async (req, res) => {
-    if (!await db.userExists("req.params.userId")) {
+    if (!await db.userExists(req.params.userId)) {
         res.redirect("/users");
     }
 
