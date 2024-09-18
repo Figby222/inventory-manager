@@ -11,8 +11,7 @@
         <header>
             <%- include("navbar") %>
         </header>
-        <main>
-            <h1 class="main-heading"><%= title %></h1>
+        <aside>
             <form class="users-search" action="/users/search" method="GET">
                 <%- include("errors") %>
                 <h2 class="users-search-heading">Users Search</h2>
@@ -30,6 +29,9 @@
                 </div>
                 <button type="submit">Search</button>
             </form>
+        </aside>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
             <% if (locals.users) { %>
                 <section class="users">
                     <ul>
