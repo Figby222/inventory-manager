@@ -20,3 +20,9 @@ main {
     background-color: unset;
     padding: unset;
 }
+
+@media ( min-width: 1000px ) {
+    .houses-list {
+        gap: 30px;
+    }
+}
