@@ -132,4 +132,8 @@ input, select {
     :root {
         font-size: 16px;
     }
+
+    .navbar-link {
+        padding: 10px 20px;
+    }
 }
