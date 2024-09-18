@@ -127,3 +127,9 @@ input, select {
     border-radius: 5px;
     margin-left: 10px;
 }
+
+@media ( max-width: 600px ) {
+    :root {
+        font-size: 16px;
+    }
+}
