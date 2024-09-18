@@ -141,4 +141,8 @@ input, select {
     .navbar-link {
         padding: 10px 20px;
     }
+
+    button[type="submit"] {
+        padding: 8px 19px;
+    }
 }
