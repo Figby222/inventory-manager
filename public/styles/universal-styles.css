@@ -135,6 +135,10 @@ input, select {
     max-width: max-content;
 }
 
+.create, .update {
+    text-decoration: none;
+}
+
 .create {
     background-color: rgb(9, 245, 40);
     padding: var(--button-padding);
