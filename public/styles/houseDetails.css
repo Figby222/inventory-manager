@@ -107,3 +107,22 @@ img {
     background-color: var(--main-bg-color);
     text-align: center;
 }
+
+@media ( max-width: 600px ) {
+    :root {
+        font-size: 16px;
+        --main-padding: 16px;
+    }
+
+    .navbar-ul {
+        gap: 16px;
+    }
+
+    .navbar-link {
+        padding: 10px 20px;
+    }
+
+    button[type="submit"] {
+        padding: 8px 19px;
+    }
+}
