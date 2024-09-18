@@ -132,6 +132,10 @@ input, select {
     display: block;
 }
 
+.create {
+    background-color: var(--main-bg-color);
+}
+
 @media ( max-width: 600px ) {
     :root {
         font-size: 16px;
