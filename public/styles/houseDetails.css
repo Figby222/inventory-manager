@@ -132,4 +132,9 @@ img {
         padding: 15px 146px;
         gap: 50px;
     }
+
+    .house-amenity, .house-info {
+        padding: 10px 30px;
+    }
+    
 }
