@@ -19,3 +19,9 @@ main {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
 }
+
+@media ( min-width: 1000px ) {
+    .users-list {
+        gap: 30px;
+    }
+} 
