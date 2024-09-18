@@ -5,6 +5,7 @@
     --house-amenities-bg-color: #d8d7d5;
     --house-amenities-gap: 10px;
     --house-amenities-padding: 15px;
+    --button-padding: 10px 24px;
 }
 
 body {
@@ -135,6 +136,7 @@ input, select {
 
 .create {
     background-color: var(--main-bg-color);
+    padding: var(--button-padding);
 }
 
 @media ( max-width: 600px ) {
