@@ -31,10 +31,11 @@ a {
 
 .navbar-ul {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
+    grid-template-columns: repeat(3, auto);
     align-items: center;
     justify-content: center;
     justify-items: center;
+    gap: 27px;
 }
 
 .navbar-link {
@@ -125,4 +126,34 @@ input, select {
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 10px;
+}
+
+@media ( max-width: 600px ) {
+    :root {
+        font-size: 16px;
+        --main-padding: 16px;
+    }
+
+    .navbar-ul {
+        gap: 16px;
+    }
+
+    .navbar-link {
+        padding: 10px 20px;
+    }
+
+    button[type="submit"] {
+        padding: 8px 19px;
+    }
+}
+
+@media ( min-width: 1000px ) {
+    body {
+        padding: 15px 146px;
+        gap: 50px;
+    }
+
+    .amenity, .category {
+        padding: 10px 30px;
+    }
 }
