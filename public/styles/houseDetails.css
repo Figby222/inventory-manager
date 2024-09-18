@@ -31,10 +31,11 @@ a {
 
 .navbar-ul {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
+    grid-template-columns: repeat(3, auto);
     align-items: center;
     justify-content: center;
     justify-items: center;
+    gap: 27px;
 }
 
 .navbar-link {
