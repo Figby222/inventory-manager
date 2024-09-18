@@ -11,3 +11,8 @@ body {
     grid-template-rows: repeat(auto, auto);
     gap: 15px;
 }
+
+main {
+    background-color: unset;
+    padding: unset;
+}
