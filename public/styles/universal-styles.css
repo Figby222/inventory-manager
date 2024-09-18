@@ -130,6 +130,7 @@ input, select {
 
 .create, .more-info, .update {
     display: block;
+    max-width: max-content;
 }
 
 .create {
