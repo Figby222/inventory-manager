@@ -131,6 +131,7 @@ input, select {
 @media ( max-width: 600px ) {
     :root {
         font-size: 16px;
+        --main-padding: 16px;
     }
 
     .navbar-ul {
