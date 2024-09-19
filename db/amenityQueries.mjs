@@ -57,4 +57,13 @@ async function getAmenitiesList() {
     return rows;
 }
 
-export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity, createAmenity, deleteAmenity, getAmenitiesList };
+async function amenityExists(amenityId) {
+    const { rows } = await Pool.query(format(`
+        SELECT id FROM amenities
+        WHERE amenities.id = %1$L
+    `, amenityId))
+
+    return !!rows[0];
+}
+
+export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity, createAmenity, deleteAmenity, getAmenitiesList, amenityExists };
