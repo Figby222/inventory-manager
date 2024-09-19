@@ -5,6 +5,8 @@ body {
 
 .amenities-list {
     grid-template-columns: unset;
+    grid-template-rows: repeat(auto, auto);
+    gap: 15px;
     padding: unset;
     background-color: unset;
     justify-content: unset;
