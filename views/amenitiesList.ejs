@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <aside>
+            <form action="/amenities/search" method="GET">
+                <h1 class="form-heading">Filter Search</h1>
+                <%- include("errors") %>
+                <fieldset>
+                    <div class="field-container">
+                        <label for="amenity_name">Amenity: </label>
+                        <input type="text" name="amenity_name" id="amenity_name" />
+                    </div>
+                </fieldset>
+                <button type="submit">Search</button>
+            </form>
+        </aside>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
+            <a href="/amenities/new" class="create">Create an amenity</a>
+            <% if (locals.amenities) { %>
+                <ul class="amenities-list">
+                    <% locals.amenities.forEach((amenity) => { %>
+                        <li class="amenity">
+                            <h2 class="amenity-name"><%= amenity.amenity_name %></h2>
+                            <a href="/amenities/<%= amenity.id %>" class="more-info">More info</a>
+                            <a href="/amenities/update/<%= amenity.id %>" class="update">Update amenity</a>
+                            <form class="delete-amenity-form"><button type="submit" class="delete">Delete amenity</button></form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="no-amenities-found">No amenities found</p> 
+            <% } %>
+        </main>
+    </body>
+</html>
