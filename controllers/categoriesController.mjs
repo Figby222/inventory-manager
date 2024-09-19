@@ -87,4 +87,20 @@ const categoriesListGet = asyncHandler(async (req, res) => {
     res.render("categoriesList", { title: "Categories", categories: categoriesList });
 })
 
-export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet }
+const updateCategoryPageGet = asyncHandler(async (req, res) => {
+    const categoryDetails = await db.getCategoryDetails(req.params.categoryId);
+
+    if(!categoryDetails) {
+        throw new NotFoundError(`Category with id ${req.params.categoryId} not found`);
+    }
+
+    res.render("updateCategory", {
+        title: categoryDetails.category_name,
+        category: {
+            title: categoryDetails.category_name,
+            id: categoryDetails.id
+        }
+    });
+})
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet, updateCategoryPageGet }
