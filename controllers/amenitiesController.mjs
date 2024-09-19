@@ -87,4 +87,20 @@ const amenitiesListGet = asyncHandler(async (req, res) => {
     res.render("amenitiesList", { title: "Amenities", amenities: amenitiesList });
 })
 
-export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet }
+const updateAmenityPageGet = asyncHandler(async (req, res) => {
+    const amenityDetails = await db.getAmenityDetails(req.params.amenityId);
+
+    if(!amenityDetails) {
+        throw new NotFoundError(`Amenity with id ${req.params.amenityId} not found`);
+    }
+
+    res.render("updateAmenity", {
+        title: amenityDetails.amenity_name,
+        amenity: {
+            title: amenityDetails.amenity_name,
+            id: amenityDetails.id
+        }
+    });
+})
+
+export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet, updateAmenityPageGet }
