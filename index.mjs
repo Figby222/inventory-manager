@@ -4,6 +4,7 @@ import path from "node:path";
 import indexRouter from "./routers/indexRouter.mjs";
 import housesRouter from "./routers/housesRouter.mjs";
 import usersRouter from "./routers/usersRouter.mjs";
+import amenitiesRouter from "./routers/amenitiesRouter.mjs";
 import "dotenv/config";
 
 const __dirname = import.meta.dirname;
@@ -18,6 +19,8 @@ app.set("view engine", "ejs");
 app.use("/houses", housesRouter);
 
 app.use("/users", usersRouter);
+
+app.use("/amenities", amenitiesRouter);
 
 app.use("/", indexRouter);
 
