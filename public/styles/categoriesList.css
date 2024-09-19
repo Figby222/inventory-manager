@@ -2,3 +2,8 @@ body {
     background-color: #eaeff2;
     grid-template-rows: auto auto 1fr;
 }
+
+.categories-list {
+    grid-template-rows: repeat(auto, auto);
+    gap: 15px;
+}
