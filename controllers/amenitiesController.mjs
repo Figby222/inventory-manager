@@ -59,4 +59,27 @@ const createAmenityPageGet = asyncHandler(async (req, res) => {
     res.render("createAmenity", { title: "Create an Amenity", amenity: {} });
 })
 
-export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet }
+const createAmenityPost = [
+    createAmenityFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            res.status(400).render("createAmenity", {
+                title: "Create an Amenity",
+                errors: errors.errors,
+                user: {
+                    ...req.body
+                }
+            });
+            return;
+        }
+
+        await db.createAmenity({
+            amenity_name: req.body.amenity_name
+        });
+
+        res.redirect("/amenities");
+    })
+]
+
+export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost }
