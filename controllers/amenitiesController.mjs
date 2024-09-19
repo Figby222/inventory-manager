@@ -105,7 +105,7 @@ const updateAmenityPageGet = asyncHandler(async (req, res) => {
 
 const updateAmenityPost = [
     createAmenityFormValidator,
-    asynchandler(async (req, res) => {
+    asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const amenityDetails = await db.getAmenityDetails(req.params.amenityId);
