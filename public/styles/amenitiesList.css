@@ -19,3 +19,8 @@ body {
     border-radius: unset;
     text-align: unset;
 }
+
+main {
+    background-color: unset;
+    padding: unset;
+}
