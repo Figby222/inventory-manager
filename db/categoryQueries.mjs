@@ -39,4 +39,13 @@ async function createCategory(query) {
     ))
 }
 
-export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory }
+async function deleteCategory(categoryId) {
+    await Pool.query(format(`
+        DELETE
+        FROM categories
+        WHERE categories.id= %1$L
+        RETURNING *
+    `, categoryId))
+}
+
+export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory, deleteCategory }
