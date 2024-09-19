@@ -11,4 +11,6 @@ body {
 .amenity {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
+    border-radius: unset;
+    text-align: unset;
 }
