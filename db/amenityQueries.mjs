@@ -20,4 +20,12 @@ async function getAmenitiesSearchList(query) {
     return rows;
 }
 
-export default { getAmenityDetails, getAmenitiesSearchList };
+async function updateAmenity(amenityId, query) {
+    await Pool.query(format(`
+        UPDATE amenities
+        SET amenity_name = %1$L
+        WHERE amenities.id = %2$L
+    `, query.amenity_name, amenityId))
+}
+
+export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity };
