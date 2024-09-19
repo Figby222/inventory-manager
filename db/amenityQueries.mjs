@@ -10,4 +10,14 @@ async function getAmenityDetails(amenityId) {
     return rows[0];
 }
 
-export default { getAmenityDetails };
+async function getAmenitiesSearchList(query) {
+    const { rows } = await Pool.query(format(`
+        SELECT id, amenity_name
+        FROM amenities
+        WHERE LOWER(amenity_name) LIKE LOWER(%1$L)
+    `, ('%' + query.amenity_name + '%')))
+
+    return rows;
+}
+
+export default { getAmenityDetails, getAmenitiesSearchList };
