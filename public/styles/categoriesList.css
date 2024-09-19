@@ -3,14 +3,22 @@ body {
     grid-template-rows: auto auto 1fr;
 }
 
+
 .categories-list {
     grid-template-rows: repeat(auto, auto);
     gap: 15px;
 }
+
 
 .amenity {
     background-color: var(--main-bg-color);
     padding: var(--main-padding);
     border-radius: unset;
     text-align: unset;
+}
+
+
+main {
+    background-color: unset;
+    padding: unset;
 }
