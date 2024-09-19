@@ -4,7 +4,9 @@
   "description": "A Node.js inventory manager repository used to manage inventories",
   "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch index.mjs",
+    "build": "node index.mjs"
   },
   "repository": {
     "type": "git",
