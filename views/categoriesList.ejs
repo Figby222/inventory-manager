@@ -32,7 +32,7 @@
                             <h2 class="category-name"><%= category.category_name %></h2>
                             <a href="/categories/<%= category.id %>" class="more-info">More info</a>
                             <a href="/categories/update/<%= category.id %>" class="update">Update category</a>
-                            <form class="delete-category-form"><button type="submit" class="delete">Delete Category</button></form>
+                            <form class="delete-category-form" action="/categories/delete/<%= category.id %>" method="POST"><button type="submit" class="delete">Delete Category</button></form>
                         </li>
                     <% }) %>
                 </ul>
