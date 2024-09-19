@@ -82,4 +82,9 @@ const createAmenityPost = [
     })
 ]
 
-export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost }
+const amenitiesListGet = asyncHandler(async (req, res) => {
+    const amenitiesList = await db.getAmenitiesList();
+    res.render("amenitiesList", { title: "Amenities", amenities: amenitiesList });
+})
+
+export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet }
