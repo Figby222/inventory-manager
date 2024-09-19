@@ -55,4 +55,8 @@ const categoriesListSearchGet = [
     })
 ]
 
-export { categoryDetailsGet, categoriesListSearchGet }
+const createCategoryPageGet = asyncHandler(async (req, res) => {
+    res.render("createCategory", { title: "Create a category", category: {} });
+})
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet }
