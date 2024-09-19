@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <heading>
+            <%- include("navbar") %>
+        </heading>
+        <aside>
+            <form action="/categories/search" method="GET">
+                <h1 class="form-heading">Filter Search</h1>
+                <%- include("errors") %>
+                <fieldset>
+                    <div class="field-container">
+                        <label for="category_name">Category: </label>
+                        <input type="text" name="category_name" id="category_name" />
+                    </div>
+                </fieldset>
+                <button type="submit">Search</button>
+            </form>
+        </aside>
+        <main>
+            <h1 class="main-heading"><%= title %></h1>
+            <a href="/categories/new" class="create">Create a category</a>
+            <% if (locals.categories) { %>
+                <ul class="categories-list">
+                    <% locals.categories.forEach((category) => { %>
+                        <li class="category">
+                            <h2 class="category-name"><%= category.category_name %></h2>
+                            <a href="/categories/<%= category.id %>" class="more-info">More info</a>
+                            <a href="/categories/update/<%= category.id %>" class="update">Update category</a>
+                            <form class="delete-category-form"><button type="submit" class="delete">Delete Category</button></form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="no-categories-found">No categories found</p>
+            <% } %>
+        </main>
+    </body>
+</html>
