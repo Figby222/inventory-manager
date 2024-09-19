@@ -82,4 +82,9 @@ const createCategoryPost = [
     })
 ]
 
-export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost }
+const categoriesListGet = asyncHandler(async (req, res) => {
+    const categoriesList = await db.getCategoriesList();
+    res.render("categoriesList", { title: "Categories", categories: categoriesList });
+})
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet }
