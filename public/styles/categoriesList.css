@@ -13,3 +13,7 @@ body {
     padding: var(--main-padding);
     border-radius: unset;
 }
+main {
+    background-color: unset;
+    padding: unset;
+}
