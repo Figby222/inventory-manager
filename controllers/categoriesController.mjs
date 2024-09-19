@@ -33,4 +33,26 @@ const categoryDetailsGet = asyncHandler(async (req, res) => {
     })
 })
 
-export { categoryDetailsGet }
+const categoriesListSearchGet = [
+    searchcategoryFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            const categoriesList = await db.getcategoriesList();
+            res.status(400).render("categoriesList", { title: "categories", errors: errors.errors, categories: categoriesList })
+            return;
+        }
+
+        const categoriesList = await db.getcategoriesSearchList({
+            category_name: req.query.category_name
+        })
+
+        if(categoriesList.length === 0) {
+            const categoriesList = await db.getcategoriesList();
+            res.status(404).render("categoriesList");
+        }
+        res.render("categoriesList", { title: "categories", categories: categoriesList });
+    })
+]
+
+export { categoryDetailsGet, categoriesListSearchGet }
