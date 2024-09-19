@@ -33,4 +33,26 @@ const amenityDetailsGet = asyncHandler(async (req, res) => {
     })
 })
 
-export { amenityDetailsGet }
+const amenitiesListSearchGet = [
+    searchAmenityFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            const amenitiesList = await db.getAmenitiesList();
+            res.status(400).render("amenitiesList", { title: "Amenities", errors: errors.errors, amenities: amenitiesList })
+            return;
+        }
+
+        const amenitiesList = await db.getAmenitiesSearchList({
+            amenity_name: req.query.amenity_name
+        })
+
+        if(amenitiesList.length === 0) {
+            const amenitiesList = await db.getAmenitiesList();
+            res.status(404).render("amenitiesList");
+        }
+        res.render("amenitiesList", { title: "Amenities", amenities: amenitiesList });
+    })
+]
+
+export { amenityDetailsGet, amenitiesListSearchGet }
