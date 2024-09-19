@@ -10,4 +10,14 @@ async function getCategoryDetails(categoryId) {
     return rows[0];
 }
 
-export default { getCategoryDetails }
+async function getCategoriesSearchList(query) {
+    const { rows } = await Pool.query(format(`
+        SELECT id, category_name
+        FROM categories
+        WHERE LOWER(category_name) LIKE LOWER(%1$L)
+    `, ('%' + query.category_name + '%')))
+
+    return rows;
+}
+
+export default { getCategoryDetails, getCategoriesSearchList }
