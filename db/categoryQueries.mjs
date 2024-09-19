@@ -57,4 +57,13 @@ async function getCategoriesList() {
     return rows;
 }
 
-export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory, deleteCategory, getCategoriesList }
+async function categoryExists(categoryId) {
+    const { rows } = await Pool.query(format(`
+        SELECT id FROM categories
+        WHERE categories.id = %1$L
+    `, categoryId))
+
+    return !!rows[0];
+}
+
+export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory, deleteCategory, getCategoriesList, categoryExists }
