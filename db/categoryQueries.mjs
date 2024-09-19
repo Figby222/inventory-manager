@@ -48,4 +48,13 @@ async function deleteCategory(categoryId) {
     `, categoryId))
 }
 
-export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory, deleteCategory }
+async function getCategoriesList() {
+    const { rows } = await Pool.query(`
+        SELECT id, category_name
+        FROM categories
+    `)
+
+    return rows;
+}
+
+export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory, deleteCategory, getCategoriesList }
