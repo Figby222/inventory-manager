@@ -103,4 +103,32 @@ const updateAmenityPageGet = asyncHandler(async (req, res) => {
     });
 })
 
-export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet, updateAmenityPageGet }
+const updateAmenityPost = [
+    createAmenityFormValidator,
+    asynchandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const amenityDetails = await db.getAmenityDetails(req.params.amenityId);
+            res.status(400).render("updateAmenity", {
+                title: "Update Amenity",
+                erorrs: errors.errors,
+                user: {
+                    ...userDetails
+                }
+            });
+            return;
+        }
+
+        if (!db.amenityExists(req.params.amenityId)) {
+            throw new NotFoundError(`Amenity with id ${req.params.amenityId} not found`);
+        }
+
+        await db.updateAmenity(req.params.amenityId, {
+            amenity_name: req.body.amenity_name
+        })
+
+        res.redirect("/amenities");
+    })
+]
+
+export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet, updateAmenityPageGet, updateAmenityPost }
