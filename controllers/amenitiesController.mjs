@@ -131,4 +131,13 @@ const updateAmenityPost = [
     })
 ]
 
-export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet, updateAmenityPageGet, updateAmenityPost }
+const deleteAmenityPost = asyncHandler(async (req, res) => {
+    if (!await db.amenityExists(req.params.amenityId)) {
+        res.redirect("/amenities");
+    }
+
+    await db.deleteAmenity(req.params.amenityId);
+    res.redirect("/amenities");
+})
+
+export { amenityDetailsGet, amenitiesListSearchGet, createAmenityPageGet, createAmenityPost, amenitiesListGet, updateAmenityPageGet, updateAmenityPost, deleteAmenityPost }
