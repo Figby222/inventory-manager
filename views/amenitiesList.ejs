@@ -32,7 +32,7 @@
                             <h2 class="amenity-name"><%= amenity.amenity_name %></h2>
                             <a href="/amenities/<%= amenity.id %>" class="more-info">More info</a>
                             <a href="/amenities/update/<%= amenity.id %>" class="update">Update amenity</a>
-                            <form class="delete-amenity-form"><button type="submit" class="delete">Delete amenity</button></form>
+                            <form class="delete-amenity-form" action="/amenities/delete/<%= amenity.id %>" method="POST"><button type="submit" class="delete">Delete amenity</button></form>
                         </li>
                     <% }) %>
                 </ul>
