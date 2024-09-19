@@ -105,7 +105,7 @@ const updateCategoryPageGet = asyncHandler(async (req, res) => {
 
 const updateCategoryPost = [
     createCategoryFormValidator,
-    asynchandler(async (req, res) => {
+    asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             const categoryDetails = await db.getCategoryDetails(req.params.categoryId);
