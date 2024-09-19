@@ -28,4 +28,15 @@ async function updateAmenity(amenityId, query) {
     `, query.amenity_name, amenityId))
 }
 
-export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity };
+async function createAmenity(query) {
+    await Pool.query(format(`
+            INSERT INTO amenities(amenity_name)
+            VALUES (
+                %1$L
+            )
+        `,
+        query.amenity_name
+    ))
+}
+
+export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity, createAmenity };
