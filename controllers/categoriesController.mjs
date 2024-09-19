@@ -131,4 +131,13 @@ const updateCategoryPost = [
     })
 ]
 
-export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet, updateCategoryPageGet, updateCategoryPost }
+const deleteCategoryPost = asyncHandler(async (req, res) => {
+    if (!await db.categoryExists(req.params.categoryId)) {
+        res.redirect("/categories");
+    }
+
+    await db.deleteCategory(req.params.categoryId);
+    res.redirect("/categories");
+})
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet, updateCategoryPageGet, updateCategoryPost, deleteCategoryPost }
