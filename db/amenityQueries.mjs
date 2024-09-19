@@ -39,4 +39,13 @@ async function createAmenity(query) {
     ))
 }
 
-export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity, createAmenity };
+async function deleteAmenity(amenityId) {
+    await Pool.query(format(`
+        DELETE
+        FROM amenities
+        WHERE amenities.id= %1$L
+        RETURNING *
+    `, amenityId))
+}
+
+export default { getAmenityDetails, getAmenitiesSearchList, updateAmenity, createAmenity, deleteAmenity };
