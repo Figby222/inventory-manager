@@ -20,4 +20,12 @@ async function getCategoriesSearchList(query) {
     return rows;
 }
 
-export default { getCategoryDetails, getCategoriesSearchList }
+async function updateCategory(categoryId, query) {
+    await Pool.query(format(`
+        UPDATE categories
+        SET category_name = %1$L
+        WHERE categories.id = %2$L
+    `, query.category_name, categoryId))
+}
+
+export default { getCategoryDetails, getCategoriesSearchList, updateCategory }
