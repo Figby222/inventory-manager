@@ -1,5 +1,6 @@
 body {
     background-color: #eaeff2;
+    grid-template-rows: auto auto 1fr;
 }
 
 .amenities-list {
