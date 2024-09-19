@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <header>
+            <%- include("navbar") %>
+        </header>
+        <main>
+            <h1 class="main-heading">Create an amenity</h1>
+            <form action="/amenities/new" method="POST">
+                <%- include("errors") %>
+                <fieldset>
+                    <div class="field-container">
+                        <label for="amenity_name">Amenity: </label>
+                        <input type="text" name="amenity_name" id="amenity_name" value="<%= locals.amenity.amenity_name %>" required />
+                    </div>
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>
