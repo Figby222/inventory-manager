@@ -7,9 +7,9 @@ amenitiesRouter.get("/search", amenitiesController.amenitiesListSearchGet);
 
 amenitiesRouter.get("/update/:amenityId", amenitiesController.updateAmenityPageGet);
 
-amenitiesRouter.get("/:amenityId", amenitiesController.amenityDetailsGet)
-
 amenitiesRouter.get("/new", amenitiesController.createAmenityPageGet);
+
+amenitiesRouter.get("/:amenityId", amenitiesController.amenityDetailsGet)
 
 amenitiesRouter.get("/", amenitiesController.amenitiesListGet);
 
