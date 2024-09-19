@@ -9,3 +9,8 @@ body {
     justify-content: unset;
     align-items: unset;
 }
+
+.amenity {
+    border-radius: unset;
+    text-align: unset;
+}
