@@ -5,6 +5,7 @@ import indexRouter from "./routers/indexRouter.mjs";
 import housesRouter from "./routers/housesRouter.mjs";
 import usersRouter from "./routers/usersRouter.mjs";
 import amenitiesRouter from "./routers/amenitiesRouter.mjs";
+import categoriesRouter from "./routers/categoriesRouter.mjs";
 import "dotenv/config";
 
 const __dirname = import.meta.dirname;
@@ -21,6 +22,8 @@ app.use("/houses", housesRouter);
 app.use("/users", usersRouter);
 
 app.use("/amenities", amenitiesRouter);
+
+app.use("/categories", categoriesRouter);
 
 app.use("/", indexRouter);
 
