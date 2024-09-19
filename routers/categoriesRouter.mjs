@@ -7,9 +7,9 @@ categoriesRouter.get("/search", categoriesController.categoriesListSearchGet);
 
 categoriesRouter.get("/update/:categoryId", categoriesController.updateCategoryPageGet);
 
-categoriesRouter.get("/:categoryId", categoriesController.categoryDetailsGet);
-
 categoriesRouter.get("/new", categoriesController.createCategoryPageGet);
+
+categoriesRouter.get("/:categoryId", categoriesController.categoryDetailsGet);
 
 categoriesRouter.get("/", categoriesController.categoriesListGet);
 
