@@ -103,4 +103,32 @@ const updateCategoryPageGet = asyncHandler(async (req, res) => {
     });
 })
 
-export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet, updateCategoryPageGet }
+const updateCategoryPost = [
+    createCategoryFormValidator,
+    asynchandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const categoryDetails = await db.getCategoryDetails(req.params.categoryId);
+            res.status(400).render("updateCategory", {
+                title: "Update Category",
+                erorrs: errors.errors,
+                user: {
+                    ...userDetails
+                }
+            });
+            return;
+        }
+
+        if (!db.categoryExists(req.params.categoryId)) {
+            throw new NotFoundError(`Category with id ${req.params.categoryId} not found`);
+        }
+
+        await db.updateCategory(req.params.categoryId, {
+            category_name: req.body.category_name
+        })
+
+        res.redirect("/categories");
+    })
+]
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost, categoriesListGet, updateCategoryPageGet, updateCategoryPost }
