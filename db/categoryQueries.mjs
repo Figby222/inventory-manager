@@ -28,4 +28,15 @@ async function updateCategory(categoryId, query) {
     `, query.category_name, categoryId))
 }
 
-export default { getCategoryDetails, getCategoriesSearchList, updateCategory }
+async function createCategory(query) {
+    await Pool.query(format(`
+            INSERT INTO categories(category_name)
+            VALUES (
+                %1$L
+            )
+        `,
+        query.category_name
+    ))
+}
+
+export default { getCategoryDetails, getCategoriesSearchList, updateCategory, createCategory }
