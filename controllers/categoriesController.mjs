@@ -5,9 +5,9 @@ import NotFoundError from "./util/NotFoundError.mjs";
 
 const createCategoryFormValidator = [
     body("category_name")
-        .notEmpty().withMessage("category field must not be empty")
-        .isAlpha('en-US', { ignore: ' ' }).withMessage("category field must only contain alphabetical characters")
-        .isLength({ max: 30 }).withMessage("category field must contain a maximum of 30 characters")
+        .notEmpty().withMessage("Category field must not be empty")
+        .isAlpha('en-US', { ignore: ' ' }).withMessage("Category field must only contain alphabetical characters")
+        .isLength({ max: 30 }).withMessage("Category field must contain a maximum of 30 characters")
 ]
 
 const searchCategoryFormValidator = [
@@ -18,7 +18,7 @@ const searchCategoryFormValidator = [
 ]
 
 const categoryDetailsGet = asyncHandler(async (req, res) => {
-    const categoryDetails = await db.getcategoryDetails(req.params.categoryId);
+    const categoryDetails = await db.getCategoryDetails(req.params.categoryId);
 
     if (!categoryDetails) {
         throw new NotFoundError(`category with id ${req.params.categoryId} not found`);
@@ -34,21 +34,21 @@ const categoryDetailsGet = asyncHandler(async (req, res) => {
 })
 
 const categoriesListSearchGet = [
-    searchcategoryFormValidator,
+    searchCategoryFormValidator,
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            const categoriesList = await db.getcategoriesList();
+            const categoriesList = await db.getCategoriesList();
             res.status(400).render("categoriesList", { title: "categories", errors: errors.errors, categories: categoriesList })
             return;
         }
 
-        const categoriesList = await db.getcategoriesSearchList({
+        const categoriesList = await db.getCategoriesSearchList({
             category_name: req.query.category_name
         })
 
         if(categoriesList.length === 0) {
-            const categoriesList = await db.getcategoriesList();
+            const categoriesList = await db.getCategoriesList();
             res.status(404).render("categoriesList");
         }
         res.render("categoriesList", { title: "categories", categories: categoriesList });
@@ -59,4 +59,27 @@ const createCategoryPageGet = asyncHandler(async (req, res) => {
     res.render("createCategory", { title: "Create a category", category: {} });
 })
 
-export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet }
+const createCategoryPost = [
+    createCategoryFormValidator,
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            res.status(400).render("createCategory", {
+                title: "Create a Category",
+                errors: errors.errors,
+                category: {
+                    ...req.body
+                }
+            });
+            return;
+        }
+
+        await db.createCategory({
+            category_name: req.body.category_name
+        });
+
+        res.redirect("/categories");
+    })
+]
+
+export { categoryDetailsGet, categoriesListSearchGet, createCategoryPageGet, createCategoryPost }
